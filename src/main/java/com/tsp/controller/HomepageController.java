@@ -9,13 +9,13 @@ import com.tsp.GraphApplication;
 import com.tsp.algorithm.Algorithm;
 import com.tsp.context.Context;
 import com.tsp.graph.Graph;
-import com.tsp.controller.expGraphController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class HomepageController implements Initializable {
 
@@ -35,29 +35,19 @@ public class HomepageController implements Initializable {
 	}
 
 	public void homePage() throws IOException {
-		AnchorPane child = FXMLLoader.load(getClass().getResource("Welcomepage.fxml"));
+		AnchorPane child = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Welcomepage.fxml")));
 		presentArea.getChildren().setAll(child);
 		System.out.println("Welcome Page");
 	}
 
 	public void graphK4() throws IOException {
 
-		try{
-			System.out.println(" graph k4");
-			Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/tsp/controller/expGraph.fxml")));
+		Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("expGraph.fxml")));
+		Scene newScene = new Scene(root);
+		GraphApplication.stage.setScene(newScene);
+		GraphApplication.stage.show();
 
-			//exp= loader.getController();
-			//exp.setGraph(graph.graphK4());
-
-			Scene newScene = new Scene(root);
-
-			//newScene.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
-			GraphApplication.primaryStage.setScene(newScene);
-
-		} catch(Exception e){
-			e.printStackTrace();
-		}
-
+		System.out.println(" graph k4");
 	}
 
 /*ublic void homePage() throws IOException {

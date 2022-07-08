@@ -5,7 +5,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
-fx:controller="com.tsp.controller.HomepageController">
+            fx:controller="com.tsp.controller.HomepageController">
    <children>
       <AnchorPane maxHeight="600.0" maxWidth="800.0" prefHeight="600.0" prefWidth="800.0">
          <children>
