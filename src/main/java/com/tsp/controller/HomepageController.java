@@ -24,15 +24,16 @@ public class HomepageController implements Initializable {
 
 	@FXML
 
-	public Button codeTraceButton;
-	public Button statusButton;
+	public AnchorPane drawBoard;
 
-	public Label textOfShowStatus;
-	public Label textOfShowCodeTrace;
-	public AnchorPane main;
 
 	public TextFlow status;
+	public Button codeTraceButton;
+	public Label textOfShowStatus;
+
 	public TextFlow codeTrace;
+	public Button statusButton;
+	public Label textOfShowCodeTrace;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

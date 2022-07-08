@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 public class AppController implements Initializable {
     @FXML
     public ProgressBar process;
-    public AnchorPane ap;
+    public AnchorPane container;
     public Label text;
 
     @Override
