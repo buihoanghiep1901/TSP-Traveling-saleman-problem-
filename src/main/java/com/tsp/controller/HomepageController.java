@@ -42,16 +42,22 @@ public class HomepageController implements Initializable {
 
 	public void graphK4() throws IOException {
 
-		Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/tsp/controller/expGraph.fxml")));
+		try{
+			System.out.println(" graph k4");
+			Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/tsp/controller/expGraph.fxml")));
 
-		//exp= loader.getController();
-		//exp.setGraph(graph.graphK4());
+			//exp= loader.getController();
+			//exp.setGraph(graph.graphK4());
 
-		Scene newScene = new Scene(root);
+			Scene newScene = new Scene(root);
 
-		//newScene.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
-		GraphApplication.primaryStage.setScene(newScene);
-		System.out.println(" graph k4");
+			//newScene.getStylesheets().add(getClass().getResource("Styling.css").toExternalForm());
+			GraphApplication.primaryStage.setScene(newScene);
+
+		} catch(Exception e){
+			e.printStackTrace();
+		}
+
 	}
 
 /*ublic void homePage() throws IOException {
