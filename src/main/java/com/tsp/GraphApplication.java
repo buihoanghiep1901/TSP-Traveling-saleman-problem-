@@ -11,7 +11,7 @@ import java.util.Objects;
 
 public class GraphApplication extends Application {
 
-	public static Stage primaryStage;
+	public static Stage stage;
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
@@ -19,9 +19,10 @@ public class GraphApplication extends Application {
 			Parent root = FXMLLoader.load(GraphApplication.class.getResource("/com/tsp/controller/Homepage.fxml"));
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/com/tsp/controller/application.css")).toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.show();
-			primaryStage.setTitle("Visualization Application");
+			stage = new Stage();
+			stage.setScene(scene);
+			stage.show();
+			stage.setTitle("Visualization Application");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
