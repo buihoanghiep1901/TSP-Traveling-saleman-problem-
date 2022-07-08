@@ -7,22 +7,35 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 import java.io.IOException;
-import java.util.Objects;
 
-public class GraphApplication extends Application {
+public class app extends Application {
 
 	public static Stage stage;
+
+	private double xOffset = 0;
+	private double yOffset = 0;
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		try {
-			Parent root = FXMLLoader.load(GraphApplication.class.getResource("/com/tsp/controller/Homepage.fxml"));
+			Parent root = FXMLLoader.load(app.class.getResource("app.fxml"));
 			Scene scene = new Scene(root);
-			scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/com/tsp/controller/application.css")).toExternalForm());
 			stage = new Stage();
 			stage.setScene(scene);
-			stage.show();
+
+			root.setOnMousePressed(mouseEvent -> {
+				xOffset = mouseEvent.getSceneX();
+				yOffset = mouseEvent.getSceneY();
+			});
+			root.setOnMouseDragged(mouseEvent -> {
+				stage.setX(mouseEvent.getScreenX() - xOffset);
+				stage.setY(mouseEvent.getScreenY() - yOffset);
+			});
+
 			stage.setTitle("Visualization Application");
+			stage.setAlwaysOnTop(true);
+			stage.show();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

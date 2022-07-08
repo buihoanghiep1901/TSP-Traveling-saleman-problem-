@@ -5,7 +5,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-import com.tsp.GraphApplication;
+import com.tsp.app;
 import com.tsp.algorithm.Algorithm;
 import com.tsp.context.Context;
 import com.tsp.graph.Graph;
@@ -14,19 +14,25 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.TextFlow;
 
 public class HomepageController implements Initializable {
 
 	@FXML
-	private AnchorPane presentArea;
 
-	private expGraphController exp;
+	public Button codeTraceButton;
+	public Button statusButton;
 
-	private static Graph graph = new Graph();
-	private static Algorithm algorithm;
-	private static final Context context = new Context();
+	public Label textOfShowStatus;
+	public Label textOfShowCodeTrace;
+	public AnchorPane main;
+
+	public TextFlow status;
+	public TextFlow codeTrace;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -34,21 +40,32 @@ public class HomepageController implements Initializable {
 
 	}
 
-	public void homePage() throws IOException {
-		AnchorPane child = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Welcomepage.fxml")));
-		presentArea.getChildren().setAll(child);
-		System.out.println("Welcome Page");
-	}
-
 	public void graphK4() throws IOException {
 
 		Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("expGraph.fxml")));
 		Scene newScene = new Scene(root);
-		GraphApplication.stage.setScene(newScene);
-		GraphApplication.stage.show();
+		app.stage.setScene(newScene);
+		app.stage.show();
 
 		System.out.println(" graph k4");
 	}
+
+	public void showStatus(){
+		if(status.isVisible()){
+			status.setVisible(false);
+		} else{
+			status.setVisible(true);
+		}
+	}
+
+	public void showCodeTrace(){
+		if(codeTrace.isVisible()){
+			codeTrace.setVisible(false);
+		} else{
+			codeTrace.setVisible(true);
+		}
+	}
+
 
 /*ublic void homePage() throws IOException {
 		AnchorPane child = FXMLLoader.load(getClass().getResource("Welcomepage.fxml"));
@@ -79,6 +96,12 @@ public class HomepageController implements Initializable {
 		System.out.println("HashTable Page");
 		AnchorPane child = FXMLLoader.load(getClass().getResource("/application/Hashtablepage.fxml"));
 		presentArea.getChildren().setAll(child);
+	}*/
+
+	/*public void homePage() throws IOException {
+		AnchorPane child = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Welcomepage.fxml")));
+		presentArea.getChildren().setAll(child);
+		System.out.println("Welcome Page");
 	}*/
 
 }
