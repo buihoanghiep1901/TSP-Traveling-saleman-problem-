@@ -32,7 +32,7 @@ public class app extends Application {
 				stage.setY(mouseEvent.getScreenY() - yOffset);
 			});
 
-			stage.setTitle("Visualization Application");
+			stage.setTitle("TSP Visualization Application");
 			stage.setAlwaysOnTop(true);
 			stage.show();
 

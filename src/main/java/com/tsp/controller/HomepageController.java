@@ -67,7 +67,67 @@ public class HomepageController implements Initializable {
 	}
 
 
-/*ublic void homePage() throws IOException {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/*ublic void homePage() throws IOException {
 		AnchorPane child = FXMLLoader.load(getClass().getResource("Welcomepage.fxml"));
 		presentArea.getChildren().setAll(child);
 		System.out.println("Welcome Page");
