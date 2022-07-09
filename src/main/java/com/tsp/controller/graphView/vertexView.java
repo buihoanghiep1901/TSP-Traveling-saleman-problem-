@@ -1,13 +1,12 @@
 package com.tsp.controller.graphView;
-
-import com.tsp.graph.Vertex;
+import  com.tsp.graph.Vertex;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.StrokeType;
 
-public class vertexView  extends StackPane {
+public class vertexView extends StackPane {
 
     private Vertex v;
     private final Label label = new Label();
@@ -33,6 +32,10 @@ public class vertexView  extends StackPane {
         circle.setStrokeType(StrokeType.INSIDE);
         label.setText(this.v.getId() + "");
         this.getChildren().addAll(circle, label);
+    }
+
+    public String getIdVertex(){
+        return this.v.getId();
     }
 
     public Label getLabel() {
