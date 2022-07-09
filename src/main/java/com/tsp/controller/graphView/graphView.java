@@ -12,10 +12,16 @@ public class graphView {
 
 
     public void addVertexView(vertexView vertexView1) {
-        vertexViews.forEach(vertexView2 -> addEdgeView(new edgeView(vertexView1, vertexView2)));
         vertexViews.add(vertexView1);
         graph.addVertex(vertexView1.getV().getId());
-        System.out.println("vertexview: "+graph.toString());
+        vertexViews.forEach(vertexView2 -> {
+
+            if(!vertexView2.equals(vertexView1)){
+                addEdgeView(new edgeView(vertexView1, vertexView2));
+            }
+
+        });
+        //System.out.println("vertexview: "+graph.toString());
     }
 
     public void addEdgeView(edgeView edgeView) {
@@ -23,9 +29,8 @@ public class graphView {
         graph.addUndirectedGraphEdge(edgeView.getEdge().getSource().getId(),
                                      edgeView.getEdge().getDestination().getId(),
                                      edgeView.getWeight());
-        System.out.println("edgeview: "+graph.toString());
+        //System.out.println("edgeview: "+graph.toString());
     }
-
 
     public edgeView getEdgeView(int start, int end) {
         for (edgeView edgeView : edgeViews) {

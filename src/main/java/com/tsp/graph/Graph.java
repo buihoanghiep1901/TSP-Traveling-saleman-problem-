@@ -3,9 +3,9 @@ package com.tsp.graph;
 import java.util.*;
 
 public class Graph {
-    private Set<Vertex> vertices = new TreeSet<Vertex>();
+    private final Set<Vertex> vertices = new TreeSet<Vertex>();
 
-    private Set<Edge> edges = new TreeSet<Edge>();
+    private final Set<Edge> edges = new TreeSet<Edge>();
 
     public void addVertex(String id) {
         // TODO

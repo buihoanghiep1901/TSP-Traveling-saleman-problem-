@@ -26,6 +26,7 @@ import javafx.scene.robot.Robot;
 import javafx.scene.text.TextFlow;
 
 
+
 public class HomepageController implements Initializable {
 
 	@FXML
@@ -61,19 +62,11 @@ public class HomepageController implements Initializable {
 	}
 
 	public void showStatus(){
-		if(status.isVisible()){
-			status.setVisible(false);
-		} else{
-			status.setVisible(true);
-		}
+		status.setVisible(!status.isVisible());
 	}
 
 	public void showCodeTrace(){
-		if(codeTrace.isVisible()){
-			codeTrace.setVisible(false);
-		} else{
-			codeTrace.setVisible(true);
-		}
+		codeTrace.setVisible(!codeTrace.isVisible());
 	}
 
 	public void addOrLink(MouseEvent mouseEvent) {
@@ -92,6 +85,7 @@ public class HomepageController implements Initializable {
 			refreshVertex(node);
 
 			node.setOnMouseEntered(mouseEvent1 -> node.requestFocus());
+
 			node.setOnKeyPressed(keyEvent -> {
 				if (keyEvent.getCode() == KeyCode.DELETE) {
 					refreshVertex(node);
@@ -106,25 +100,53 @@ public class HomepageController implements Initializable {
 		graphView.getVertexViews().forEach(stackPane -> ((Label) stackPane.getChildren().get(1)).setText(graphView.getVertexViews().indexOf(stackPane) +""));
 	}
 
-	private void refreshVertex(vertexView vertex) {
-		if (!graphView.getVertexViews().contains(vertex)) {
-			graphView.addVertexView(vertex);
+	private void refreshVertex(vertexView vertexView1) {
+		if (!graphView.getVertexViews().contains(vertexView1)) {
+
+			graphView.addVertexView(vertexView1);
+
 			graphView.getEdgeViews().forEach(edgeView -> {
-				if (!drawBoard.getChildren().contains(edgeView))
+
+				if (!drawBoard.getChildren().contains(edgeView)){
+
 					drawBoard.getChildren().addAll(edgeView, edgeView.getLabel());
+
+				}
 			});
 		} else {
+
+			graphView.getVertexViews().removeIf(vertexView2 ->{
+				if(vertexView2.getIdVertex().equals(vertexView1.getIdVertex())){
+
+					drawBoard.getChildren().remove(vertexView1);
+
+					graphView.getGraph().removeVertex(vertexView1.getIdVertex());
+
+					return true;
+
+				} else{
+
+					return false;
+				}
+
+
+			});
+
 			graphView.getEdgeViews().removeIf(edgeView -> {
-				if (edgeView.getFrom().equals(vertex) || edgeView.getTo().equals(vertex)) {
+				if (edgeView.getFrom().equals(vertexView1) || edgeView.getTo().equals(vertexView1)) {
+
 					graphView.getGraph().removeEdge(edgeView.getEdge().getSource().getId(),
 													edgeView.getEdge().getDestination().getId());
 					drawBoard.getChildren().removeAll(edgeView, edgeView.getLabel());
+
 					return true;
-				} else
+				} else{
+
 					return false;
+				}
+
 			});
-			drawBoard.getChildren().remove(vertex);
-			graphView.getVertexViews().remove(vertex);
+
 			refreshNode();
 		}
 	}
