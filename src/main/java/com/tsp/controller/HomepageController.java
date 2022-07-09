@@ -97,7 +97,17 @@ public class HomepageController implements Initializable {
 	}
 
 	private void refreshNode() {
-		graphView.getVertexViews().forEach(stackPane -> ((Label) stackPane.getChildren().get(1)).setText(graphView.getVertexViews().indexOf(stackPane) +""));
+		graphView.getVertexViews().forEach(stackPane -> {
+
+			((Label) stackPane.getChildren().get(1)).setText(graphView.getVertexViews().indexOf(stackPane) +"");
+
+			stackPane.getV().setId(Integer.toString(graphView.getVertexViews().indexOf(stackPane)));
+
+		});
+
+		graphView.getGraph().getVertices().forEach(vertex ->{
+			vertex.setId(Integer.toString(graphView.getGraph().getVertices().indexOf(vertex)));
+		});
 	}
 
 	private void refreshVertex(vertexView vertexView1) {
