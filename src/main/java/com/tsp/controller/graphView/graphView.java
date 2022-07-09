@@ -8,13 +8,14 @@ import java.util.ArrayList;
 public class graphView {
     private final ArrayList<vertexView> vertexViews = new ArrayList<>();
     private final ArrayList<edgeView> edgeViews = new ArrayList<>();
-    private Graph graph;
+    private Graph graph= new Graph();
 
 
     public void addVertexView(vertexView vertexView1) {
-        getVertexViews().forEach(vertexView2 -> addEdgeView(new edgeView(vertexView1, vertexView2)));
+        vertexViews.forEach(vertexView2 -> addEdgeView(new edgeView(vertexView1, vertexView2)));
         vertexViews.add(vertexView1);
-        graph.addVertex(vertexView1.getIdVertex());
+        graph.addVertex(vertexView1.getV().getId());
+        System.out.println("vertexview: "+graph.toString());
     }
 
     public void addEdgeView(edgeView edgeView) {
@@ -22,13 +23,14 @@ public class graphView {
         graph.addUndirectedGraphEdge(edgeView.getEdge().getSource().getId(),
                                      edgeView.getEdge().getDestination().getId(),
                                      edgeView.getWeight());
+        System.out.println("edgeview: "+graph.toString());
     }
 
 
     public edgeView getEdgeView(int start, int end) {
         for (edgeView edgeView : edgeViews) {
             if ((edgeView.getFrom().getIdVertex().equals(Integer.toString(start)) && edgeView.getTo().getIdVertex().equals(Integer.toString(end))) ||
-                    (edgeView.getTo().getIdVertex().equals(Integer.toString(start))  && edgeView.getFrom().getIdVertex().equals(Integer.toString(end))))
+                (edgeView.getTo().getIdVertex().equals(Integer.toString(start))  && edgeView.getFrom().getIdVertex().equals(Integer.toString(end))))
                 return edgeView;
         }
         return null;

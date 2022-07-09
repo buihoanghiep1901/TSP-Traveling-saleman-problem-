@@ -43,8 +43,8 @@ public class vertexView extends StackPane {
     }
 
     public void setLabel(int id) {
-        this.v.setId(Integer.toString(id));
-        this.label.setText(this.v.getId() + "");
+        this.v= new Vertex(Integer.toString(id));
+        this.label.setText(id + "");
     }
 
     public Vertex getV() {
