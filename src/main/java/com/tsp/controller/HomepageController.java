@@ -6,11 +6,11 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 import com.tsp.app;
-import com.tsp.algorithm.Algorithm;
-import com.tsp.context.Context;
 import com.tsp.controller.graphView.graphView;
 import com.tsp.controller.graphView.vertexView;
-import com.tsp.graph.Graph;
+import com.tsp.step.Step;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,7 +23,12 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.robot.Robot;
+import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import com.tsp.algorithm.Algorithm;
+import com.tsp.algorithm.BruteForce;
+import com.tsp.algorithm.DynamicProgramming;
+import com.tsp.algorithm.Approximation;
 
 
 
@@ -69,26 +74,26 @@ public class HomepageController implements Initializable {
 		codeTrace.setVisible(!codeTrace.isVisible());
 	}
 
-	public void addOrLink(MouseEvent mouseEvent) {
+	public void drawGraph(MouseEvent mouseEvent) {
 		Node location = mouseEvent.getPickResult().getIntersectedNode();
 		//System.out.println(location);
 		if (location == drawBoard) {
-			vertexView node = new vertexView();
+			vertexView vertexViewNode = new vertexView();
 			double x = robot.getMouseX() - drawBoard.localToScreen(drawBoard.getBoundsInLocal()).getMinX() - 22;
 			double y = robot.getMouseY() - drawBoard.localToScreen(drawBoard.getBoundsInLocal()).getMinY() - 22;
 			x = Math.min(x, drawBoard.getPrefWidth() - 44);
 			y = Math.min(y, drawBoard.getPrefHeight() - 44);
-			node.setLayoutX(x);
-			node.setLayoutY(y);
-			node.setLabel(graphView.getVertexViews().size());
-			drawBoard.getChildren().add(node);
-			refreshVertex(node);
+			vertexViewNode.setLayoutX(x);
+			vertexViewNode.setLayoutY(y);
+			vertexViewNode.setLabel(graphView.getVertexViews().size());
+			drawBoard.getChildren().add(vertexViewNode);
+			addOrRemoveVertex(vertexViewNode);
 
-			node.setOnMouseEntered(mouseEvent1 -> node.requestFocus());
+			vertexViewNode.setOnMouseEntered(mouseEvent1 -> vertexViewNode.requestFocus());
 
-			node.setOnKeyPressed(keyEvent -> {
+			vertexViewNode.setOnKeyPressed(keyEvent -> {
 				if (keyEvent.getCode() == KeyCode.DELETE) {
-					refreshVertex(node);
+					addOrRemoveVertex(vertexViewNode);
 				}
 			});
 		}
@@ -96,7 +101,7 @@ public class HomepageController implements Initializable {
 
 	}
 
-	private void refreshNode() {
+	private void refreshIdVertex() {
 		graphView.getVertexViews().forEach(stackPane -> {
 
 			((Label) stackPane.getChildren().get(1)).setText(graphView.getVertexViews().indexOf(stackPane) +"");
@@ -110,7 +115,7 @@ public class HomepageController implements Initializable {
 		});
 	}
 
-	private void refreshVertex(vertexView vertexView1) {
+	private void addOrRemoveVertex(vertexView vertexView1) {
 		if (!graphView.getVertexViews().contains(vertexView1)) {
 
 			graphView.addVertexView(vertexView1);
@@ -157,8 +162,51 @@ public class HomepageController implements Initializable {
 
 			});
 
-			refreshNode();
+			refreshIdVertex();
 		}
+	}
+
+	public void run() {
+		Algorithm bf = new BruteForce();
+		bf.setGraph(graphView.getGraph());
+		Task<Void> task = new Task<>() {
+			@Override
+			public Void call() throws Exception {
+				Platform.runLater(() -> codeTrace.getChildren().clear());
+				if (!codeTrace.isVisible())
+					showCodeTrace();
+				if (!status.isVisible())
+					showStatus();
+				for (int i = 0; i < bf.getPseudoStep().size(); i++) {
+					Text text = new Text(bf.getPseudoStep().get(i));
+					text.setStyle("-fx-font-size: 16px");
+					Platform.runLater(() -> codeTrace.getChildren().add(text));
+				}
+				/*for (PseudoStep step : bf.getPseudoSteps()) {
+					Platform.runLater(() -> {
+						codeTrace.getChildren().forEach(node -> node.setStyle("-fx-font-weight: normal"));
+						int idPseudo = Integer.parseInt(step.getText());
+						if (idPseudo != -1)
+							codeTrace.getChildren().get(idPseudo).setStyle("-fx-font-weight: bold");
+					});
+
+					for (Step detail : bf.getStepList()) {
+						Platform.runLater(() -> {
+							if (detail.getText().length() > 0) {
+								status.getChildren().clear();
+								status.getChildren().add(new Text(detail.getText()));
+							}
+							Platform.runLater(detail::run);
+						});
+					}*/
+				Platform.runLater(detail::run);
+					Thread.sleep(2000);
+				}
+				return null;
+
+		}
+
+		new Thread(task).start();
 	}
 
 
