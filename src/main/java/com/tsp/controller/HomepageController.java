@@ -6,8 +6,8 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 import com.tsp.app;
-import com.tsp.controller.graphView.graphView;
-import com.tsp.controller.graphView.vertexView;
+import com.tsp.controller.graphView.GraphView;
+import com.tsp.controller.graphView.VertexView;
 import com.tsp.step.Step;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -27,9 +27,6 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import com.tsp.algorithm.Algorithm;
 import com.tsp.algorithm.BruteForce;
-import com.tsp.algorithm.DynamicProgramming;
-import com.tsp.algorithm.Approximation;
-
 
 
 public class HomepageController implements Initializable {
@@ -46,7 +43,7 @@ public class HomepageController implements Initializable {
 	public Button statusButton;
 	public Label textOfShowCodeTrace;
 
-	public graphView graphView = new graphView();
+	public GraphView graphView = new GraphView();
 
 	Robot robot = new Robot();
 
@@ -78,7 +75,7 @@ public class HomepageController implements Initializable {
 		Node location = mouseEvent.getPickResult().getIntersectedNode();
 		//System.out.println(location);
 		if (location == drawBoard) {
-			vertexView vertexViewNode = new vertexView();
+			VertexView vertexViewNode = new VertexView();
 			double x = robot.getMouseX() - drawBoard.localToScreen(drawBoard.getBoundsInLocal()).getMinX() - 22;
 			double y = robot.getMouseY() - drawBoard.localToScreen(drawBoard.getBoundsInLocal()).getMinY() - 22;
 			x = Math.min(x, drawBoard.getPrefWidth() - 44);
@@ -115,7 +112,7 @@ public class HomepageController implements Initializable {
 		});
 	}
 
-	private void addOrRemoveVertex(vertexView vertexView1) {
+	private void addOrRemoveVertex(VertexView vertexView1) {
 		if (!graphView.getVertexViews().contains(vertexView1)) {
 
 			graphView.addVertexView(vertexView1);

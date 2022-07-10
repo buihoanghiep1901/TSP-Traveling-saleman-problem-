@@ -5,8 +5,8 @@ import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
-public class edgeView extends Line {
-    private vertexView from, to;
+public class EdgeView extends Line {
+    private VertexView from, to;
     private int weight;
 
     private Edge edge;
@@ -18,7 +18,7 @@ public class edgeView extends Line {
         return label;
     }
 
-    public edgeView (vertexView vertexView1, vertexView vertexView2) {
+    public EdgeView(VertexView vertexView1, VertexView vertexView2) {
 
         setFrom(vertexView1);
         setTo(vertexView2);
@@ -41,21 +41,21 @@ public class edgeView extends Line {
                 "-fx-pref-height: 40px;-fx-pref-width: 40px;-fx-alignment: center");
     }
 
-    public vertexView getFrom() {
+    public VertexView getFrom() {
         return from;
     }
 
-    public void setFrom(vertexView from) {
+    public void setFrom(VertexView from) {
         this.from = from;
         this.setStartX(this.from.getLayoutX() + 22);
         this.setStartY(this.from.getLayoutY() + 22);
     }
 
-    public vertexView getTo() {
+    public VertexView getTo() {
         return to;
     }
 
-    public void setTo(vertexView to) {
+    public void setTo(VertexView to) {
         this.to = to;
         this.setEndY(this.to.getLayoutY() + 22);
         this.setEndX(this.to.getLayoutX() + 22);

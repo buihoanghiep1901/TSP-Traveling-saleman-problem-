@@ -6,13 +6,13 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.StrokeType;
 
-public class vertexView extends StackPane {
+public class VertexView extends StackPane {
 
     private Vertex v;
     private final Label label = new Label();
 
 
-    public vertexView() {
+    public VertexView() {
         this.setPrefSize(2, 14);
         Circle circle = new Circle();
         circle.setRadius(22);
@@ -22,7 +22,7 @@ public class vertexView extends StackPane {
         this.getChildren().addAll(circle, label);
     }
 
-    public vertexView(Vertex v) {
+    public VertexView(Vertex v) {
         this.setPrefSize(2, 14);
         this.v=v;
         Circle circle = new Circle();

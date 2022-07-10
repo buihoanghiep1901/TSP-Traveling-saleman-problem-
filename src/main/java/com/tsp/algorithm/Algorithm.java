@@ -4,14 +4,22 @@ import com.tsp.graph.Graph;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import com.tsp.step.EdgeViewStep;
 import com.tsp.step.Step;
+import com.tsp.step.VertexViewStep;
 
 public abstract class Algorithm {
+
     protected Graph graph;
 
     protected List<Step> stepList = new ArrayList<>();
 
     protected HashMap<Integer,String> pseudoStep = new HashMap<>();
+
+    protected List<EdgeViewStep> edgeViewSteps = new ArrayList<>();
+
+    protected List<VertexViewStep> vetexViewSteps = new ArrayList<>();
 
 
     public abstract void run();

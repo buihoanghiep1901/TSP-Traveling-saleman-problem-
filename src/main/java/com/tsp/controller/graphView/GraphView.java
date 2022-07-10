@@ -7,35 +7,35 @@ import java.util.ArrayList;
 import com.tsp.graph.Edge;
 import com.tsp.graph.Vertex;
 
-public class graphView {
-    private final ArrayList<vertexView> vertexViews = new ArrayList<>();
-    private final ArrayList<edgeView> edgeViews = new ArrayList<>();
+public class GraphView {
+    private final ArrayList<VertexView> VertexViews = new ArrayList<>();
+    private final ArrayList<EdgeView> EdgeViews = new ArrayList<>();
     private Graph graph= new Graph();
 
 
-    public void addVertexView(vertexView vertexView1) {
-        vertexViews.add(vertexView1);
+    public void addVertexView(VertexView vertexView1) {
+        VertexViews.add(vertexView1);
         graph.addVertex(vertexView1.getV().getId());
-        vertexViews.forEach(vertexView2 -> {
+        VertexViews.forEach(vertexView2 -> {
 
             if(!vertexView2.equals(vertexView1)){
-                addEdgeView(new edgeView(vertexView1, vertexView2));
+                addEdgeView(new EdgeView(vertexView1, vertexView2));
             }
 
         });
         //System.out.println("vertexview: "+graph.toString());
     }
 
-    public void addEdgeView(edgeView edgeView) {
-        edgeViews.add(edgeView);
+    public void addEdgeView(EdgeView edgeView) {
+        EdgeViews.add(edgeView);
         graph.addUndirectedGraphEdge(edgeView.getEdge().getSource().getId(),
                                      edgeView.getEdge().getDestination().getId(),
                                      edgeView.getWeight());
         //System.out.println("edgeview: "+graph.toString());
     }
 
-    public edgeView getEdgeView(int start, int end) {
-        for (edgeView edgeView : edgeViews) {
+    public EdgeView getEdgeView(int start, int end) {
+        for (EdgeView edgeView : EdgeViews) {
             if ((edgeView.getFrom().getIdVertex().equals(Integer.toString(start)) && edgeView.getTo().getIdVertex().equals(Integer.toString(end))) ||
                 (edgeView.getTo().getIdVertex().equals(Integer.toString(start))  && edgeView.getFrom().getIdVertex().equals(Integer.toString(end))))
                 return edgeView;
@@ -48,11 +48,11 @@ public class graphView {
 
     public  void highlight(Vertex vertex, boolean isLight) {
 
-        vertexViews.forEach(vertexView -> {
+        VertexViews.forEach(VertexView -> {
 
-            if(vertexView.getV().equals(vertex)){
+            if(VertexView.getV().equals(vertex)){
 
-                ((Circle) vertexView.getChildren().get(0)).setFill(isLight ? Color.ORANGE : Color.DODGERBLUE);
+                ((Circle) VertexView.getChildren().get(0)).setFill(isLight ? Color.ORANGE : Color.DODGERBLUE);
             }
 
         });
@@ -61,22 +61,22 @@ public class graphView {
 
     public  void highlight(Edge edge, boolean isLight) {
 
-        edgeViews.forEach(edgeView -> {
+        EdgeViews.forEach(EdgeView -> {
 
-            if(edgeView.getEdge().equals(edge)){
-                edgeView.setStroke(isLight ? Color.ORANGE : Color.DODGERBLUE);
+            if(EdgeView.getEdge().equals(edge)){
+                EdgeView.setStroke(isLight ? Color.ORANGE : Color.DODGERBLUE);
             }
         });
 
     }
 
 
-    public ArrayList<vertexView> getVertexViews() {
-        return vertexViews;
+    public ArrayList<VertexView> getVertexViews() {
+        return VertexViews;
     }
 
-    public ArrayList<edgeView> getEdgeViews() {
-        return edgeViews;
+    public ArrayList<EdgeView> getEdgeViews() {
+        return EdgeViews;
     }
 
     public Graph getGraph() {
