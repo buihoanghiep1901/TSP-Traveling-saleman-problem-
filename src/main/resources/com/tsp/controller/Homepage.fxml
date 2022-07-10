@@ -16,7 +16,7 @@
 						<Font name="System Bold Italic" size="14.0" />
 					</font>
 				</Button>
-				<Button layoutX="19.0" layoutY="567.0" maxHeight="30.0" maxWidth="160.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" style="-fx-background-color: #3638bc; -fx-border-color: gray; -fx-border-radius: 2.0;" text="BRUTE FORCE" textFill="#00f000" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="567.0">
+				<Button  onAction="#BruteForce" layoutX="19.0" layoutY="567.0" maxHeight="30.0" maxWidth="160.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" style="-fx-background-color: #3638bc; -fx-border-color: gray; -fx-border-radius: 2.0;" text="BRUTE FORCE" textFill="#00f000" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="567.0">
 					<font>
 						<Font name="System Bold Italic" size="14.0" />
 					</font>

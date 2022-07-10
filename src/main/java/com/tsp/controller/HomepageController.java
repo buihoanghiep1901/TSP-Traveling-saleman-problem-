@@ -166,9 +166,10 @@ public class HomepageController implements Initializable {
 		}
 	}
 
-	public void run() {
+	public void BruteForce() {
 		Algorithm bf = new BruteForce();
 		bf.setGraph(graphView.getGraph());
+		bf.run();
 		Task<Void> task = new Task<>() {
 			@Override
 			public Void call() throws Exception {
@@ -182,6 +183,19 @@ public class HomepageController implements Initializable {
 					text.setStyle("-fx-font-size: 16px");
 					Platform.runLater(() -> codeTrace.getChildren().add(text));
 				}
+
+				for (Step step : bf.getStepList()) {
+					Platform.runLater(() -> {
+						status.getChildren().clear();
+						status.getChildren().add(new Text(step.toString()));
+						codeTrace.getChildren().forEach(node -> node.setStyle("-fx-font-weight: normal"));
+						for (int i = 0; i < bf.getPseudoStep().size(); i++) {
+							if (step.getId() == i) {
+								codeTrace.getChildren().get(i).setStyle("-fx-font-weight: bold");
+							}
+						}
+					});
+
 				/*for (PseudoStep step : bf.getPseudoSteps()) {
 					Platform.runLater(() -> {
 						codeTrace.getChildren().forEach(node -> node.setStyle("-fx-font-weight: normal"));
@@ -199,12 +213,13 @@ public class HomepageController implements Initializable {
 							Platform.runLater(detail::run);
 						});
 					}*/
-				Platform.runLater(detail::run);
-					Thread.sleep(2000);
-				}
-				return null;
 
-		}
+				Thread.sleep(2000);
+				return null;
+				}
+
+
+		};
 
 		new Thread(task).start();
 	}
