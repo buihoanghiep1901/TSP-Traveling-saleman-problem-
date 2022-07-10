@@ -35,7 +35,7 @@ public class EdgeView extends Line {
         label.setVisible(true);
         setViewOrder(99);
 
-        label.setStyle("-fx-background-radius: 20px; -fx-background-color: #ff99cc;" +
+        label.setStyle("-fx-background-radius: 20px;" +
                 "-fx-pref-height: 40px;-fx-pref-width: 40px;-fx-alignment: center");
     }
 

@@ -50,9 +50,20 @@ public class BruteForce extends Algorithm {
         if(checker == visited)
         {
             //step1
-            EdgeViewStep edge1=new EdgeViewStep(graph.getEdge(Integer.toString(position),Integer.toString(0)),false);
 
-            stepList.add(new Step(1,"Every node has been visited. Returning the cost between the last and the original vertex: "+graph.getEdge(Integer.toString(position),Integer.toString(0)).getWeight(),edge1));
+            EdgeViewStep edge1a=new EdgeViewStep(graph.getEdge(Integer.toString(position),Integer.toString(0)),true);
+
+            stepList.add(new Step(1,"Every node has been visited. Returning the cost between the last and the original vertex: "+graph.getEdge(Integer.toString(position),Integer.toString(0)).getWeight()
+                    ,edge1a));
+
+
+            VertexViewStep vertex1 =new VertexViewStep(graph.getVertex(Integer.toString(position)), false);
+
+            EdgeViewStep edge1b=new EdgeViewStep(graph.getEdge(Integer.toString(position),Integer.toString(0)),false);
+
+            stepList.add(new Step(1,"Every node has been visited. Returning the cost between the last and the original vertex: "+graph.getEdge(Integer.toString(position),Integer.toString(0)).getWeight()
+                    , vertex1, edge1b));
+
 
             //vetexViewSteps.add(new VertexViewStep(graph.getVertex(Integer.toString(0)), true));
 
@@ -66,6 +77,8 @@ public class BruteForce extends Algorithm {
 
         int city;
 
+        int count = 0;
+
         for(city=0;city<graph.getVertices().size();city++){
 
             if((checker&(1<<city))==0){
@@ -77,6 +90,7 @@ public class BruteForce extends Algorithm {
 
                 stepList.add(new Step(2,"going from "+ position+ " to " +city, vertex2, edge2));
 
+                count++;
 
                 // end of step2
 
@@ -91,11 +105,18 @@ public class BruteForce extends Algorithm {
 
         //step3
 
-        EdgeViewStep edge3= new EdgeViewStep(graph.getEdge(Integer.toString(position),Integer.toString(city)),false);
 
-        VertexViewStep vertex3= new VertexViewStep(graph.getVertex(Integer.toString(city)), false);
+        VertexViewStep vertex3= new VertexViewStep(graph.getVertex(Integer.toString(position)), false);
 
-        stepList.add(new Step(3,"The  current cost is: "+ans,vertex3, edge3));
+        if(count>0){
+            EdgeViewStep edge3= new EdgeViewStep(graph.getEdge(Integer.toString(position),Integer.toString(city)),false);
+            stepList.add(new Step(3,"The  current cost is: "+ans,vertex3, edge3));
+
+
+        }else{
+            stepList.add(new Step(3,"The  current cost is: "+ans,vertex3));
+
+        }
 
 
         return ans;

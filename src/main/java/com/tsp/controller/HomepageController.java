@@ -204,20 +204,22 @@ public class HomepageController implements Initializable {
 							}
 						}
 
-						if(step.getVertexStep() != null){
-							graphView.highlight(step.getVertexStep().getVertex(), step.getVertexStep().isHighLighted());
-
-						}
-
-						if(step.getEdgeStep() !=null){
+						if( step.getEdgeStep()!= null &&  step.getEdgeStep().getEdge()!=null){
 							graphView.highlight(step.getEdgeStep().getEdge(), step.getEdgeStep().isHighLighted());
 
 						}
 
+						if(step.getVertexStep()!= null && step.getVertexStep().getVertex()!= null){
+							graphView.highlight(step.getVertexStep().getVertex(), step.getVertexStep().isHighLighted());
+
+						}
+
+
+
 
 						//Platform.runLater(step::run);
 					});
-					Thread.sleep(500);
+					Thread.sleep(2000);
 				}
 
 				return null;
