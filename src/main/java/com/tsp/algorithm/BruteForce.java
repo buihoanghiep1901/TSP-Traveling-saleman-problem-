@@ -1,6 +1,8 @@
 package com.tsp.algorithm;
 
 import java.util.HashMap;
+
+import com.tsp.step.EdgeViewStep;
 import com.tsp.step.Step;
 import com.tsp.step.VertexViewStep;
 import com.tsp.utils.PressEnterToContinue;
@@ -36,9 +38,16 @@ public class BruteForce extends Algorithm {
 
     public int findTour(int visited, int checker, int position){
         //step0
-        stepList.add(new Step(0,"Visited= "+Integer.toString(visited,2)+", Positsion= "+ position + ", Checker= " + Integer.toString(checker,2)));
+        stepList.add(new Step(0,"Visited= "+Integer.toString(visited,2)+", Positsion= "+ position + ", Checker= " + Integer.toString(checker,2))
+        ,new VertexViewStep(graph.getVertex(Integer.toString(position)), true),
+                );
 
-        vetexViewSteps.add(new VertexViewStep(graph.getVertex(Integer.toString(position)), true));
+        vetexViewSteps.add();
+
+        edgeViewSteps.add(new EdgeViewStep(graph.getEdge(Integer.toString(position),Integer.toString(0)),false));
+
+        //end of step 0
+
 
         //khi đã duyệt hết tất cả các đỉnh hay chưa
         if(checker == visited)
@@ -46,16 +55,30 @@ public class BruteForce extends Algorithm {
             //step1
             stepList.add(new Step(1,"Every node has been visited. Returning the cost between the last and the original vertex: "+graph.getEdge(Integer.toString(position),Integer.toString(0)).getWeight()));
 
+            edgeViewSteps.add(new EdgeViewStep(graph.getEdge(Integer.toString(position),Integer.toString(0)),false));
+
+            vetexViewSteps.add(new VertexViewStep(graph.getVertex(Integer.toString(0)), true));
+
+
+            //end of step 1
+
             return graph.getEdge(Integer.toString(position),Integer.toString(0)).getWeight();
         }
 
         int ans = Integer.MAX_VALUE;
 
-        for(int city=0;city<graph.getVertices().size();city++){
+        int city;
+
+        for(city=0;city<graph.getVertices().size();city++){
 
             if((checker&(1<<city))==0){
                 //step2
                 stepList.add(new Step(2,"going from "+ position+ " to " +city));
+
+                edgeViewSteps.add(new EdgeViewStep(graph.getEdge(Integer.toString(position),Integer.toString(city)),true));
+
+                vetexViewSteps.add(new VertexViewStep(graph.getVertex(Integer.toString(city)), true));
+                // end of step2
 
                 int weight=graph.getEdge(Integer.toString(position),Integer.toString(city)).getWeight();
 
@@ -68,6 +91,11 @@ public class BruteForce extends Algorithm {
 
         //step3
         stepList.add(new Step(3,"The  current cost is: "+ans));
+
+        edgeViewSteps.add(new EdgeViewStep(graph.getEdge(Integer.toString(position),Integer.toString(city)),false));
+
+        vetexViewSteps.add(new VertexViewStep(graph.getVertex(Integer.toString(city)), true));
+
 
         return ans;
 
