@@ -4,6 +4,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import com.tsp.graph.Graph;
 import java.util.ArrayList;
+import com.tsp.graph.Edge;
+import com.tsp.graph.Vertex;
 
 public class graphView {
     private final ArrayList<vertexView> vertexViews = new ArrayList<>();
@@ -44,19 +46,29 @@ public class graphView {
 
 
 
-    /*public static void highlight(Vertex vertex, boolean isLight) {
-        ((Circle) vertex.getChildren().get(0)).setFill(isLight ? Color.LIGHTBLUE : Color.DODGERBLUE);
+    public  void highlight(Vertex vertex, boolean isLight) {
+
+        vertexViews.forEach(vertexView -> {
+
+            if(vertexView.getV().equals(vertex)){
+
+                ((Circle) vertexView.getChildren().get(0)).setFill(isLight ? Color.ORANGE : Color.DODGERBLUE);
+            }
+
+        });
+
     }
 
-    public static void highlight(Edge edge, boolean isLight) {
-        if (isLight) {
-            edge.setFill(Color.RED);
-            edge.setStrokeWidth(3);
-        } else {
-            edge.setFill(Color.BLUEVIOLET);
-            edge.setStrokeWidth(1);
-        }
-    }*/
+    public  void highlight(Edge edge, boolean isLight) {
+
+        edgeViews.forEach(edgeView -> {
+
+            if(edgeView.getEdge().equals(edge)){
+                edgeView.setStroke(isLight ? Color.ORANGE : Color.DODGERBLUE);
+            }
+        });
+
+    }
 
 
     public ArrayList<vertexView> getVertexViews() {
