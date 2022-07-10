@@ -13,4 +13,20 @@ public class EdgeViewStep {
 
         this.highLighted = highLighted;
     }
+
+    public Edge getEdge() {
+        return edge;
+    }
+
+    public void setEdge(Edge edge) {
+        this.edge = edge;
+    }
+
+    public boolean isHighLighted() {
+        return highLighted;
+    }
+
+    public void setHighLighted(boolean highLighted) {
+        this.highLighted = highLighted;
+    }
 }

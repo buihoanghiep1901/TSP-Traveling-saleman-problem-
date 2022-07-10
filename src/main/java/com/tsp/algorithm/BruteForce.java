@@ -2,6 +2,7 @@ package com.tsp.algorithm;
 
 import java.util.HashMap;
 import com.tsp.step.Step;
+import com.tsp.step.VertexViewStep;
 import com.tsp.utils.PressEnterToContinue;
 public class BruteForce extends Algorithm {
 
@@ -36,6 +37,8 @@ public class BruteForce extends Algorithm {
     public int findTour(int visited, int checker, int position){
         //step0
         stepList.add(new Step(0,"Visited= "+Integer.toString(visited,2)+", Positsion= "+ position + ", Checker= " + Integer.toString(checker,2)));
+
+        vetexViewSteps.add(new VertexViewStep(graph.getVertex(Integer.toString(position)), true));
 
         //khi đã duyệt hết tất cả các đỉnh hay chưa
         if(checker == visited)

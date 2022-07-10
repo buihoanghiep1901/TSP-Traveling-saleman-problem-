@@ -13,13 +13,12 @@ public abstract class Algorithm {
 
     protected Graph graph;
 
-    protected List<Step> stepList = new ArrayList<>();
+    protected List<Step> stepList = new ArrayList<>(); //current step
+    protected HashMap<Integer,String> pseudoStep = new HashMap<>(); // codetrace
 
-    protected HashMap<Integer,String> pseudoStep = new HashMap<>();
+    protected List<EdgeViewStep> edgeViewSteps = new ArrayList<>(); // highlight edges on the screen
 
-    protected List<EdgeViewStep> edgeViewSteps = new ArrayList<>();
-
-    protected List<VertexViewStep> vetexViewSteps = new ArrayList<>();
+    protected List<VertexViewStep> vetexViewSteps = new ArrayList<>(); //highlight vertexes on the screen
 
 
     public abstract void run();
