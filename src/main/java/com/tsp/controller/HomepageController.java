@@ -171,7 +171,9 @@ public class HomepageController implements Initializable {
 		bf.setGraph(graphView.getGraph());
 		bf.run();
 		Task<Void> task = new Task<>() {
+
 			@Override
+
 			public Void call() throws Exception {
 				Platform.runLater(() -> codeTrace.getChildren().clear());
 
@@ -199,13 +201,13 @@ public class HomepageController implements Initializable {
 								codeTrace.getChildren().get(i).setStyle("-fx-font-weight: bold;-fx-font-size: 16.5px");
 							}
 						}
+
 						//Platform.runLater(step::run);
 					});
+					Thread.sleep(500);
 				}
 
-
-					Thread.sleep(2000);
-					return null;
+				return null;
 			}
 
 
