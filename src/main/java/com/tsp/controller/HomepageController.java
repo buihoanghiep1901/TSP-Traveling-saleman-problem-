@@ -189,15 +189,31 @@ public class HomepageController implements Initializable {
 				for (Step step : bf.getStepList()) {
 					Platform.runLater(() -> {
 						status.getChildren().clear();
+
 						Text text = new Text(step.toString());
+
 						text.setStyle("-fx-font-size: 16.5px");
+
 						status.getChildren().add(text);
+
 						codeTrace.getChildren().forEach(node -> node.setStyle("-fx-font-weight: normal;-fx-font-size: 16.5px;"));
+
 						for (int i = 0; i < bf.getPseudoStep().size(); i++) {
 							if (step.getId() == i) {
 								codeTrace.getChildren().get(i).setStyle("-fx-font-weight: bold;-fx-font-size: 16.5px");
 							}
 						}
+
+						if(step.getVertexStep() != null){
+							graphView.highlight(step.getVertexStep().getVertex(), step.getVertexStep().isHighLighted());
+
+						}
+
+						if(step.getEdgeStep() !=null){
+							graphView.highlight(step.getEdgeStep().getEdge(), step.getEdgeStep().isHighLighted());
+
+						}
+
 
 						//Platform.runLater(step::run);
 					});

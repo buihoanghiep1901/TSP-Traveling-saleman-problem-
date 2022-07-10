@@ -44,15 +44,16 @@ public class GraphView {
     }
 
 
-
-
     public  void highlight(Vertex vertex, boolean isLight) {
 
         VertexViews.forEach(VertexView -> {
+            //System.out.println("vertex highlited");
 
-            if(VertexView.getV().equals(vertex)){
+            if(VertexView.getV().compareTo(vertex) ==0){
 
                 ((Circle) VertexView.getChildren().get(0)).setFill(isLight ? Color.ORANGE : Color.DODGERBLUE);
+                System.out.println("vertex highlited");
+
             }
 
         });
@@ -62,9 +63,12 @@ public class GraphView {
     public  void highlight(Edge edge, boolean isLight) {
 
         EdgeViews.forEach(EdgeView -> {
+            //System.out.println("edge highlited");
 
-            if(EdgeView.getEdge().equals(edge)){
-                EdgeView.setStroke(isLight ? Color.ORANGE : Color.DODGERBLUE);
+            if(EdgeView.getEdge().compareTo(edge) ==0){
+                EdgeView.setStroke(isLight ? Color.ORANGE : Color.BLACK);
+                System.out.println("edge highlited");
+
             }
         });
 

@@ -20,7 +20,7 @@ public class VertexViewStep {
         this.vertex = vertex;
     }
 
-    public boolean isHighlighted() {
+    public boolean isHighLighted() {
         return Highlighted;
     }
 

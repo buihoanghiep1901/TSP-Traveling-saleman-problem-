@@ -33,8 +33,6 @@ public class EdgeView extends Line {
         label.setLayoutY((getStartY() + getEndY()) / 2 - 20);
         label.setViewOrder(98);
         label.setVisible(true);
-
-        setFill(Color.BLUEVIOLET);
         setViewOrder(99);
 
         label.setStyle("-fx-background-radius: 20px; -fx-background-color: #ff99cc;" +
