@@ -2,6 +2,7 @@ package com.tsp.algorithm;
 
 import com.tsp.graph.Graph;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import com.tsp.step.Step;
 
@@ -9,6 +10,8 @@ public abstract class Algorithm {
     protected Graph graph;
 
     protected List<Step> stepList = new ArrayList<>();
+
+    protected HashMap<Integer,String> pseudoStep = new HashMap<>();
 
 
     public abstract void run();
@@ -28,5 +31,13 @@ public abstract class Algorithm {
 
     public void setStepList(List<Step> stepList) {
         this.stepList = stepList;
+    }
+
+    public HashMap<Integer, String> getPseudoStep() {
+        return pseudoStep;
+    }
+
+    public void setPseudoStep(HashMap<Integer, String> pseudoStep) {
+        this.pseudoStep = pseudoStep;
     }
 }

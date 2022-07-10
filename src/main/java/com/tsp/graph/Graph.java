@@ -3,9 +3,9 @@ package com.tsp.graph;
 import java.util.*;
 
 public class Graph {
-    private Set<Vertex> vertices = new TreeSet<Vertex>();
+    private final ArrayList<Vertex> vertices = new ArrayList<>();
 
-    private Set<Edge> edges = new TreeSet<Edge>();
+    private final ArrayList<Edge> edges = new ArrayList<>();
 
     public void addVertex(String id) {
         // TODO
@@ -46,7 +46,7 @@ public class Graph {
         }
         if (vertex1 == null || vertex2 == null) {
             System.out.println("Vertex does not exist");
-            return;
+
         } else {
             edges.add(new Edge(vertex1, vertex2, weight));
             System.out.println("Edge added");
@@ -60,24 +60,29 @@ public class Graph {
     }
 
     public void removeEdge(String vertex1Id, String vertex2Id) {
-        // remove edge from the graph
-        Vertex vertex1 = null;
-        Vertex vertex2 = null;
-        for (Vertex v : vertices) {
-            if (v.getId().equals(vertex1Id)) {
-                vertex1 = v;
-            }
-            if (v.getId().equals(vertex2Id)) {
-                vertex2 = v;
-            }
-        }
+        int i=0;
         for (Edge e : edges) {
-            if (e.getSource().getId().equals(vertex1Id) && e.getDestination().getId().equals(vertex2Id)) {
+            if (e.getSource().getId().equals(vertex1Id) && e.getDestination().getId().equals(vertex2Id)){
                 edges.remove(e);
-                return;
+                i++;
+                break;
             }
+
         }
-        System.out.println("Edge does not exist");
+
+        for (Edge e : edges) {
+            if (e.getSource().getId().equals(vertex2Id) && e.getDestination().getId().equals(vertex1Id)){
+                edges.remove(e);
+                i++;
+                break;
+            }
+
+        }
+
+        if(i!=0){
+            System.out.println("Edge does not exist");
+
+        }
     }
 
     @Override
@@ -114,11 +119,11 @@ public class Graph {
         return null;
     }
 
-    public Set<Vertex> getVertices() {
+    public ArrayList<Vertex> getVertices() {
         return vertices;
     }
 
-    public Set<Edge> getEdges() {
+    public ArrayList<Edge> getEdges() {
         return edges;
     }
 

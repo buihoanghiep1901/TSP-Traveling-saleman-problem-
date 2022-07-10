@@ -8,4 +8,6 @@ module com.tsp {
     exports com.tsp;
     exports com.tsp.controller;
     opens com.tsp.controller to javafx.fxml;
+    exports com.tsp.controller.graphView;
+    opens com.tsp.controller.graphView to javafx.fxml;
 }

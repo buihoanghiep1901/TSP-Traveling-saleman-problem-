@@ -16,7 +16,7 @@
 						<Font name="System Bold Italic" size="14.0" />
 					</font>
 				</Button>
-				<Button layoutX="19.0" layoutY="567.0" maxHeight="30.0" maxWidth="160.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" style="-fx-background-color: #3638bc; -fx-border-color: gray; -fx-border-radius: 2.0;" text="BRUTE FORCE" textFill="#00f000" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="567.0">
+				<Button  onAction="#BruteForce" layoutX="19.0" layoutY="567.0" maxHeight="30.0" maxWidth="160.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" style="-fx-background-color: #3638bc; -fx-border-color: gray; -fx-border-radius: 2.0;" text="BRUTE FORCE" textFill="#00f000" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="567.0">
 					<font>
 						<Font name="System Bold Italic" size="14.0" />
 					</font>
@@ -55,7 +55,7 @@
 			</children>
 		</AnchorPane>
 
-		<AnchorPane fx:id="drawBoard" layoutX="206.0" layoutY="-1.0" maxHeight="518.0" maxWidth="1063.0" prefHeight="518.0" prefWidth="965.0" style="-fx-background-color: #dddad6; -fx-background-radius: 10px; -fx-cursor: hand;" />
+		<AnchorPane fx:id="drawBoard" onMouseClicked="#drawGraph" layoutX="206.0" layoutY="-1.0" maxHeight="518.0" maxWidth="1063.0" prefHeight="518.0" prefWidth="965.0" style="-fx-background-color: #dddad6; -fx-background-radius: 10px; -fx-cursor: hand;" />
 
 		<TextFlow fx:id="status" layoutX="519.0" layoutY="529.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="46.0" prefWidth="561.0" style="-fx-background-color: #ff66cc; -fx-background-radius: 10px; -fx-padding: 10px;" visible="false" />
 		<Button fx:id="statusButton" layoutX="1097.0" layoutY="525.0" mnemonicParsing="false" onAction="#showStatus" prefHeight="46.0" prefWidth="52.0" style="-fx-background-color: #ff66cc; -fx-cursor: hand;">

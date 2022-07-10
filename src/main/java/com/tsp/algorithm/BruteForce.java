@@ -5,8 +5,6 @@ import com.tsp.step.Step;
 import com.tsp.utils.PressEnterToContinue;
 public class BruteForce extends Algorithm {
 
-    private final HashMap<Integer,String> pseudoStep = new HashMap<Integer, String>();
-
     public static final String ANSI_RESET = "\u001B[0m";
 
     public static final String ANSI_RED = "\u001B[31m";
@@ -14,10 +12,10 @@ public class BruteForce extends Algorithm {
     public BruteForce() {
         super();
         // init pseudoStep
-        pseudoStep.put(0, "function findTour(pos, checker)");
-        pseudoStep.put(1, " if every node has been visited: return cost[pos][0]\n"  + " ans = ∞");
-        pseudoStep.put(2, " for every unvisited node V\n" + "   ans = min(ans,findTour(v,mask|(1<<V))+cost[pos][v])");
-        pseudoStep.put(3, " return ans\n");
+        pseudoStep.put(0, "function findTour(pos, checker)\n");
+        pseudoStep.put(1, "   if every node has been visited: return cost[pos][0]\n"  + "   ans = ∞\n\n");
+        pseudoStep.put(2, "   for every unvisited node V\n" + "      ans = min(ans,findTour(v,mask|(1<<V))+cost[pos][v])\n\n");
+        pseudoStep.put(3, "   return ans");
     }
     @Override
 
@@ -83,7 +81,6 @@ public class BruteForce extends Algorithm {
                     System.out.println(pseudoStep.get(i));
                 }
             }
-            PressEnterToContinue.run();
         }
     }
 
@@ -98,8 +95,9 @@ public class BruteForce extends Algorithm {
                     System.out.println(pseudoStep.get(i));
                 }
             }
-
+            PressEnterToContinue.run();
         }
     }
+
 }
 
