@@ -113,9 +113,11 @@ public class Graph {
     public Edge getEdge(String vertex1Id, String vertex2Id) {
         for (Edge e : edges) {
             if (e.getSource().getId().equals(vertex1Id) && e.getDestination().getId().equals(vertex2Id)) {
+                System.out.println("get edge success: "+ vertex1Id+ "to" + vertex2Id);
                 return e;
             }
         }
+        System.out.println("get edge fail: "+ vertex1Id+ "to" + vertex2Id);
         return null;
     }
 

@@ -219,7 +219,7 @@ public class HomepageController implements Initializable {
 
 						//Platform.runLater(step::run);
 					});
-					Thread.sleep(2000);
+					Thread.sleep(1000);
 				}
 
 				return null;
