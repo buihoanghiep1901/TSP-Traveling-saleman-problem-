@@ -174,49 +174,39 @@ public class HomepageController implements Initializable {
 			@Override
 			public Void call() throws Exception {
 				Platform.runLater(() -> codeTrace.getChildren().clear());
+
 				if (!codeTrace.isVisible())
 					showCodeTrace();
+
 				if (!status.isVisible())
 					showStatus();
+
 				for (int i = 0; i < bf.getPseudoStep().size(); i++) {
 					Text text = new Text(bf.getPseudoStep().get(i));
-					text.setStyle("-fx-font-size: 16px");
+					text.setStyle("-fx-font-size: 16.5px");
 					Platform.runLater(() -> codeTrace.getChildren().add(text));
 				}
 
 				for (Step step : bf.getStepList()) {
 					Platform.runLater(() -> {
 						status.getChildren().clear();
-						status.getChildren().add(new Text(step.toString()));
-						codeTrace.getChildren().forEach(node -> node.setStyle("-fx-font-weight: normal"));
+						Text text = new Text(step.toString());
+						text.setStyle("-fx-font-size: 16.5px");
+						status.getChildren().add(text);
+						codeTrace.getChildren().forEach(node -> node.setStyle("-fx-font-weight: normal;-fx-font-size: 16.5px;"));
 						for (int i = 0; i < bf.getPseudoStep().size(); i++) {
 							if (step.getId() == i) {
-								codeTrace.getChildren().get(i).setStyle("-fx-font-weight: bold");
+								codeTrace.getChildren().get(i).setStyle("-fx-font-weight: bold;-fx-font-size: 16.5px");
 							}
 						}
+						//Platform.runLater(step::run);
 					});
-
-				/*for (PseudoStep step : bf.getPseudoSteps()) {
-					Platform.runLater(() -> {
-						codeTrace.getChildren().forEach(node -> node.setStyle("-fx-font-weight: normal"));
-						int idPseudo = Integer.parseInt(step.getText());
-						if (idPseudo != -1)
-							codeTrace.getChildren().get(idPseudo).setStyle("-fx-font-weight: bold");
-					});
-
-					for (Step detail : bf.getStepList()) {
-						Platform.runLater(() -> {
-							if (detail.getText().length() > 0) {
-								status.getChildren().clear();
-								status.getChildren().add(new Text(detail.getText()));
-							}
-							Platform.runLater(detail::run);
-						});
-					}*/
-
-				Thread.sleep(2000);
-				return null;
 				}
+
+
+					Thread.sleep(2000);
+					return null;
+			}
 
 
 		};
