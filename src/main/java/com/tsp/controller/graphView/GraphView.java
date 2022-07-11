@@ -69,7 +69,18 @@ public class GraphView {
             //System.out.println("edge highlited");
 
             if(EdgeView.getEdge().compareTo(edge) ==0){
-                EdgeView.setStroke(isLight ? Color.ORANGE : Color.BLACK);
+
+                if(isLight){
+                    EdgeView.setStroke(Color.ORANGE);
+                    EdgeView.setStrokeWidth(4);
+
+                }else{
+                    EdgeView.setStroke(Color.BLACK);
+                    EdgeView.setStrokeWidth(1);
+
+
+                }
+
                 System.out.println("edge highlited");
 
             }
