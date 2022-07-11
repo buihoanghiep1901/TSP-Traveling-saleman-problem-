@@ -1,28 +1,20 @@
 package com.tsp.controller;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.ResourceBundle;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 import com.tsp.algorithm.Approximation;
 import com.tsp.algorithm.DynamicProgramming;
-import com.tsp.app;
 import com.tsp.context.Context;
 import com.tsp.controller.graphView.GraphView;
 import com.tsp.controller.graphView.VertexView;
 import com.tsp.graph.Graph;
-import com.tsp.graph.Vertex;
 import com.tsp.step.Step;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
@@ -48,11 +40,13 @@ public class HomepageController implements Initializable {
 	public Button statusButton;
 	public Label textOfShowCodeTrace;
 
-	public GraphView graphView = new GraphView();
+	private final GraphView graphView = new GraphView();
 
 	private static final Context context = new Context();
 
-	Robot robot = new Robot();
+	private boolean exit= false;
+
+	private final Robot robot = new Robot();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -109,9 +103,7 @@ public class HomepageController implements Initializable {
 
 		});
 
-		graphView.getGraph().getVertices().forEach(vertex ->{
-			vertex.setId(Integer.toString(graphView.getGraph().getVertices().indexOf(vertex)));
-		});
+		graphView.getGraph().getVertices().forEach(vertex -> vertex.setId(Integer.toString(graphView.getGraph().getVertices().indexOf(vertex))));
 	}
 
 	private void addOrRemoveVertex(VertexView vertexView1) {
@@ -171,68 +163,68 @@ public class HomepageController implements Initializable {
 		bf.setGraph(graphView.getGraph());
 		context.setAlgorithm(bf);
 		context.play();
-		Task<Void> task = new Task<>() {
+		exit= false;
+			Task<Void> task = new Task<>() {
 
-			@Override
+				@Override
 
-			public Void call() throws Exception {
-				Platform.runLater(() -> codeTrace.getChildren().clear());
+				public Void call() throws Exception {
+					Platform.runLater(() -> codeTrace.getChildren().clear());
 
-				if (!codeTrace.isVisible())
-					showCodeTrace();
+					if (!codeTrace.isVisible())
+						showCodeTrace();
 
-				if (!status.isVisible())
-					showStatus();
+					if (!status.isVisible())
+						showStatus();
 
-				for (int i = 0; i < bf.getPseudoStep().size(); i++) {
-					Text text = new Text(bf.getPseudoStep().get(i));
-					text.setStyle("-fx-font-size: 16.5px");
-					Platform.runLater(() -> codeTrace.getChildren().add(text));
-				}
-
-				for (Step step : bf.getStepList()) {
-					Platform.runLater(() -> {
-						status.getChildren().clear();
-
-						Text text = new Text(step.toString());
-
+					for (int i = 0; i < bf.getPseudoStep().size(); i++) {
+						Text text = new Text(bf.getPseudoStep().get(i));
 						text.setStyle("-fx-font-size: 16.5px");
+						Platform.runLater(() -> codeTrace.getChildren().add(text));
+					}
 
-						status.getChildren().add(text);
+					for (Step step : bf.getStepList()) {
+						Platform.runLater(() -> {
+							status.getChildren().clear();
 
-						codeTrace.getChildren().forEach(node -> node.setStyle("-fx-font-weight: normal;-fx-font-size: 16.5px;"));
+							Text text = new Text(step.toString());
 
-						for (int i = 0; i < bf.getPseudoStep().size(); i++) {
-							if (step.getId() == i) {
-								codeTrace.getChildren().get(i).setStyle("-fx-font-weight: bold;-fx-font-size: 16.5px");
+							text.setStyle("-fx-font-size: 16.5px");
+
+							status.getChildren().add(text);
+
+							codeTrace.getChildren().forEach(node -> node.setStyle("-fx-font-weight: normal;-fx-font-size: 16.5px;"));
+
+							for (int i = 0; i < bf.getPseudoStep().size(); i++) {
+								if (step.getId() == i) {
+									codeTrace.getChildren().get(i).setStyle("-fx-font-weight: bold;-fx-font-size: 16.5px");
+								}
 							}
+
+							if( step.getEdgeStep()!= null &&  step.getEdgeStep().getEdge()!=null){
+								graphView.highlight(step.getEdgeStep().getEdge(), step.getEdgeStep().isHighLighted());
+
+							}
+
+							if(step.getVertexStep()!= null && step.getVertexStep().getVertex()!= null){
+								graphView.highlight(step.getVertexStep().getVertex(), step.getVertexStep().isHighLighted());
+
+							}
+						});
+
+						Thread.sleep(1000);
+
+						if(exit){
+							break;
 						}
+					}
 
-						if( step.getEdgeStep()!= null &&  step.getEdgeStep().getEdge()!=null){
-							graphView.highlight(step.getEdgeStep().getEdge(), step.getEdgeStep().isHighLighted());
-
-						}
-
-						if(step.getVertexStep()!= null && step.getVertexStep().getVertex()!= null){
-							graphView.highlight(step.getVertexStep().getVertex(), step.getVertexStep().isHighLighted());
-
-						}
-
-
-
-
-						//Platform.runLater(step::run);
-					});
-					Thread.sleep(1000);
+					exit= false;
+					return null;
 				}
+			};
 
-				return null;
-			}
-
-
-		};
-
-		new Thread(task).start();
+			new Thread(task).start();
 	}
 
 	public void DynamicProgramming() {
@@ -240,6 +232,8 @@ public class HomepageController implements Initializable {
 		dp.setGraph(graphView.getGraph());
 		context.setAlgorithm(dp);
 		context.play();
+		exit= false;
+
 		Task<Void> task = new Task<>() {
 
 			@Override
@@ -288,16 +282,18 @@ public class HomepageController implements Initializable {
 						}
 
 
-
-
-						//Platform.runLater(step::run);
 					});
 					Thread.sleep(500);
+
+					if(exit){
+						break;
+					}
 				}
+
+				exit=false;
 
 				return null;
 			}
-
 
 		};
 
@@ -307,9 +303,10 @@ public class HomepageController implements Initializable {
 	public void Approximation() {
 		Algorithm ap = new Approximation();
 		ap.setGraph(graphView.getGraph());
-		//bf.setGraph(Graph.graphK8());
 		context.setAlgorithm(ap);
 		context.play();
+		exit= false;
+
 		Task<Void> task = new Task<>() {
 
 			@Override
@@ -357,17 +354,18 @@ public class HomepageController implements Initializable {
 
 						}
 
-
-
-
-						//Platform.runLater(step::run);
 					});
+
 					Thread.sleep(1000);
+					if(exit){
+						break;
+					}
 				}
+
+				exit=false;
 
 				return null;
 			}
-
 
 		};
 
@@ -429,101 +427,9 @@ public class HomepageController implements Initializable {
 		graphView.getGraph().getVertices().clear();
 		graphView.getGraph().getEdges().clear();
 		drawBoard.getChildren().clear();
+		codeTrace.getChildren().clear();
+		status.getChildren().clear();
+		exit=true;
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	/*ublic void homePage() throws IOException {
-		AnchorPane child = FXMLLoader.load(getClass().getResource("Welcomepage.fxml"));
-		presentArea.getChildren().setAll(child);
-		System.out.println("Welcome Page");
-	}
-
-	public void homePage() throws IOException {
-		AnchorPane child = FXMLLoader.load(getClass().getResource("Welcomepage.fxml"));
-		presentArea.getChildren().setAll(child);
-		System.out.println("Welcome Page");
-	}
-
-
-	/*public void queuePage() throws IOException {
-		System.out.println("Queue Page");
-		AnchorPane child = FXMLLoader.load(getClass().getResource("/application/Queuepage.fxml"));
-		presentArea.getChildren().setAll(child);
-	}
-
-	public void arrayListPage() throws IOException {
-		System.out.println("Array List Page");
-		AnchorPane child = FXMLLoader.load(getClass().getResource("/application/Arraylistpage.fxml"));
-		presentArea.getChildren().setAll(child);
-	}
-
-	public void hashTablePage() throws IOException {
-		System.out.println("HashTable Page");
-		AnchorPane child = FXMLLoader.load(getClass().getResource("/application/Hashtablepage.fxml"));
-		presentArea.getChildren().setAll(child);
-	}*/
-
-	/*public void homePage() throws IOException {
-		AnchorPane child = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Welcomepage.fxml")));
-		presentArea.getChildren().setAll(child);
-		System.out.println("Welcome Page");
-	}*/
 
 }
