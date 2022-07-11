@@ -36,16 +36,6 @@ public class GraphView {
         //System.out.println("edgeview: "+graph.toString());
     }
 
-    public EdgeView getEdgeView(int start, int end) {
-        for (EdgeView edgeView : EdgeViews) {
-            if ((edgeView.getFrom().getIdVertex().equals(Integer.toString(start)) && edgeView.getTo().getIdVertex().equals(Integer.toString(end))) ||
-                (edgeView.getTo().getIdVertex().equals(Integer.toString(start))  && edgeView.getFrom().getIdVertex().equals(Integer.toString(end))))
-                return edgeView;
-        }
-        return null;
-    }
-
-
     public  void highlight(Vertex vertex, boolean isLight) {
 
         VertexViews.forEach(VertexView -> {
@@ -67,7 +57,6 @@ public class GraphView {
 
         String id2=edge.getDestination().getId();
 
-
         EdgeViews.forEach(EdgeView -> {
             //System.out.println("edge highlited");
             String id3=EdgeView.getEdge().getSource().getId();
@@ -83,7 +72,6 @@ public class GraphView {
                 }else{
                     EdgeView.setStroke(Color.BLACK);
                     EdgeView.setStrokeWidth(1);
-
 
                 }
 
@@ -111,10 +99,5 @@ public class GraphView {
         this.graph = graph;
     }
 
-
-    public static Graph example() {
-        Graph graph = new Graph();
-        return graph;
-    }
 
 }
