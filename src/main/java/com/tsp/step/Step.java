@@ -9,6 +9,12 @@ public class Step {
     private VertexViewStep vertexStep;
 
 
+    public Step(Integer id, String description) {
+        this.id = id;
+        this.description = description;
+
+    }
+
     public Step(Integer id, String description,VertexViewStep vertexStep) {
         this.id = id;
         this.description = description;

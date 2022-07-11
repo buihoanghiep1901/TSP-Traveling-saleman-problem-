@@ -16,12 +16,12 @@
 						<Font name="System Bold Italic" size="14.0" />
 					</font>
 				</Button>
-				<Button layoutX="19.0" layoutY="622.0" maxHeight="30.0" maxWidth="160.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" style="-fx-background-color: #3638bc; -fx-border-color: gray; -fx-border-radius: 2.0;" text="DYNAMIC PROGRAM" textFill="#00f000" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="622.0">
+				<Button layoutX="19.0" layoutY="622.0" maxHeight="30.0" maxWidth="160.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#DynamicProgramming" prefHeight="30.0" prefWidth="160.0" style="-fx-background-color: #3638bc; -fx-border-color: gray; -fx-border-radius: 2.0;" text="DYNAMIC PROGRAM" textFill="#00f000" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="622.0">
 					<font>
 						<Font name="System Bold Italic" size="14.0" />
 					</font>
 				</Button>
-				<Button layoutX="19.0" layoutY="677.0" maxHeight="30.0" maxWidth="160.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" style="-fx-background-color: #3638bc; -fx-border-color: gray; -fx-border-radius: 2.0;" text="2-APPRORIMATE" textFill="#00f000" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="677.0">
+				<Button layoutX="19.0" layoutY="677.0" maxHeight="30.0" maxWidth="160.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#Approximation" prefHeight="30.0" prefWidth="160.0" style="-fx-background-color: #3638bc; -fx-border-color: gray; -fx-border-radius: 2.0;" text="2-APPRORIMATE" textFill="#00f000" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="677.0">
 					<font>
 						<Font name="System Bold Italic" size="14.0" />
 					</font>

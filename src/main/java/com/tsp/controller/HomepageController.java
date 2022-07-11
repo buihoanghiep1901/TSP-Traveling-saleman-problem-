@@ -6,7 +6,10 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+import com.tsp.algorithm.Approximation;
+import com.tsp.algorithm.DynamicProgramming;
 import com.tsp.app;
+import com.tsp.context.Context;
 import com.tsp.controller.graphView.GraphView;
 import com.tsp.controller.graphView.VertexView;
 import com.tsp.graph.Graph;
@@ -46,6 +49,8 @@ public class HomepageController implements Initializable {
 	public Label textOfShowCodeTrace;
 
 	public GraphView graphView = new GraphView();
+
+	private static final Context context = new Context();
 
 	Robot robot = new Robot();
 
@@ -164,7 +169,8 @@ public class HomepageController implements Initializable {
 	public void BruteForce() {
 		Algorithm bf = new BruteForce();
 		bf.setGraph(graphView.getGraph());
-		bf.run();
+		context.setAlgorithm(bf);
+		context.play();
 		Task<Void> task = new Task<>() {
 
 			@Override
@@ -229,6 +235,146 @@ public class HomepageController implements Initializable {
 		new Thread(task).start();
 	}
 
+	public void DynamicProgramming() {
+		Algorithm dp = new DynamicProgramming();
+		dp.setGraph(graphView.getGraph());
+		context.setAlgorithm(dp);
+		context.play();
+		Task<Void> task = new Task<>() {
+
+			@Override
+
+			public Void call() throws Exception {
+				Platform.runLater(() -> codeTrace.getChildren().clear());
+
+				if (!codeTrace.isVisible())
+					showCodeTrace();
+
+				if (!status.isVisible())
+					showStatus();
+
+				for (int i = 0; i < dp.getPseudoStep().size(); i++) {
+					Text text = new Text(dp.getPseudoStep().get(i));
+					text.setStyle("-fx-font-size: 16.5px");
+					Platform.runLater(() -> codeTrace.getChildren().add(text));
+				}
+
+				for (Step step : dp.getStepList()) {
+					Platform.runLater(() -> {
+						status.getChildren().clear();
+
+						Text text = new Text(step.toString());
+
+						text.setStyle("-fx-font-size: 16.5px");
+
+						status.getChildren().add(text);
+
+						codeTrace.getChildren().forEach(node -> node.setStyle("-fx-font-weight: normal;-fx-font-size: 16.5px;"));
+
+						for (int i = 0; i < dp.getPseudoStep().size(); i++) {
+							if (step.getId() == i) {
+								codeTrace.getChildren().get(i).setStyle("-fx-font-weight: bold;-fx-font-size: 16.5px");
+							}
+						}
+
+						if( step.getEdgeStep()!= null &&  step.getEdgeStep().getEdge()!=null){
+							graphView.highlight(step.getEdgeStep().getEdge(), step.getEdgeStep().isHighLighted());
+
+						}
+
+						if(step.getVertexStep()!= null && step.getVertexStep().getVertex()!= null){
+							graphView.highlight(step.getVertexStep().getVertex(), step.getVertexStep().isHighLighted());
+
+						}
+
+
+
+
+						//Platform.runLater(step::run);
+					});
+					Thread.sleep(500);
+				}
+
+				return null;
+			}
+
+
+		};
+
+		new Thread(task).start();
+	}
+
+	public void Approximation() {
+		Algorithm ap = new Approximation();
+		ap.setGraph(graphView.getGraph());
+		//bf.setGraph(Graph.graphK8());
+		context.setAlgorithm(ap);
+		context.play();
+		Task<Void> task = new Task<>() {
+
+			@Override
+
+			public Void call() throws Exception {
+				Platform.runLater(() -> codeTrace.getChildren().clear());
+
+				if (!codeTrace.isVisible())
+					showCodeTrace();
+
+				if (!status.isVisible())
+					showStatus();
+
+				for (int i = 0; i < ap.getPseudoStep().size(); i++) {
+					Text text = new Text(ap.getPseudoStep().get(i));
+					text.setStyle("-fx-font-size: 16.5px");
+					Platform.runLater(() -> codeTrace.getChildren().add(text));
+				}
+
+				for (Step step : ap.getStepList()) {
+					Platform.runLater(() -> {
+						status.getChildren().clear();
+
+						Text text = new Text(step.toString());
+
+						text.setStyle("-fx-font-size: 16.5px");
+
+						status.getChildren().add(text);
+
+						codeTrace.getChildren().forEach(node -> node.setStyle("-fx-font-weight: normal;-fx-font-size: 16.5px;"));
+
+						for (int i = 0; i < ap.getPseudoStep().size(); i++) {
+							if (step.getId() == i) {
+								codeTrace.getChildren().get(i).setStyle("-fx-font-weight: bold;-fx-font-size: 16.5px");
+							}
+						}
+
+						if( step.getEdgeStep()!= null &&  step.getEdgeStep().getEdge()!=null){
+							graphView.highlight(step.getEdgeStep().getEdge(), step.getEdgeStep().isHighLighted());
+
+						}
+
+						if(step.getVertexStep()!= null && step.getVertexStep().getVertex()!= null){
+							graphView.highlight(step.getVertexStep().getVertex(), step.getVertexStep().isHighLighted());
+
+						}
+
+
+
+
+						//Platform.runLater(step::run);
+					});
+					Thread.sleep(1000);
+				}
+
+				return null;
+			}
+
+
+		};
+
+		new Thread(task).start();
+	}
+
+
 	/*******************************Example***************************************************/
 	public void graphK4(){
 
@@ -262,8 +408,9 @@ public class HomepageController implements Initializable {
 
 	public void graphK8(){
 
+						//  0      1        2      3      4     5       6     7
 		double[] xlayout = {327.0, 145.0, 145.0, 327.0, 563.0, 733.0, 733.0, 563.0};
-		double[] ylayout = {3.0, 124.0, 356.0, 474.0, 474.0, 356.0,  124.0, 3.0};
+		double[] ylayout = {3.0,   124.0, 356.0, 474.0, 474.0, 356.0, 124.0, 3.0};
 
 		for(int i=0; i< Graph.graphK8().getVertices().size();i++){
 			VertexView vertexViewNode = new VertexView(Graph.graphK8().getVertices().get(i));
@@ -275,8 +422,7 @@ public class HomepageController implements Initializable {
 		System.out.println(graphView.getGraph().toString());
 	}
 
-
-
+	/*******************************************Utils**************************/
 	public void clear(){
 		graphView.getVertexViews().clear();
 		graphView.getEdgeViews().clear();
