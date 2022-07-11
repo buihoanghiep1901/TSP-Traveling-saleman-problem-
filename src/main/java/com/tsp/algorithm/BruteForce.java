@@ -1,7 +1,9 @@
 package com.tsp.algorithm;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.tsp.graph.Edge;
 import com.tsp.step.EdgeViewStep;
 import com.tsp.step.Step;
 import com.tsp.step.VertexViewStep;
@@ -11,6 +13,9 @@ public class BruteForce extends Algorithm {
     public static final String ANSI_RESET = "\u001B[0m";
 
     public static final String ANSI_RED = "\u001B[31m";
+
+    ArrayList<Edge> stackEdges = new ArrayList<>();
+
 
     public BruteForce() {
         super();
@@ -51,18 +56,18 @@ public class BruteForce extends Algorithm {
         {
             //step1
 
-            EdgeViewStep edge1a=new EdgeViewStep(graph.getEdge(Integer.toString(0),Integer.toString(position)),true);
+            EdgeViewStep edge1a=new EdgeViewStep(graph.getEdge(Integer.toString(position),Integer.toString(0)),true);
 
             stepList.add(new Step(1,"Every node has been visited. Returning the cost between the last and the original vertex: "+graph.getEdge(Integer.toString(position),Integer.toString(0)).getWeight()
                     ,edge1a));
 
 
-            VertexViewStep vertex1 =new VertexViewStep(graph.getVertex(Integer.toString(position)), false);
+            //VertexViewStep vertex1 =new VertexViewStep(graph.getVertex(Integer.toString(position)), false);
 
-            EdgeViewStep edge1b=new EdgeViewStep(graph.getEdge(Integer.toString(0),Integer.toString(position)),false);
+            EdgeViewStep edge1b=new EdgeViewStep(graph.getEdge(Integer.toString(position),Integer.toString(0)),false);
 
             stepList.add(new Step(1,"Every node has been visited. Returning the cost between the last and the original vertex: "+graph.getEdge(Integer.toString(position),Integer.toString(0)).getWeight()
-                    , vertex1, edge1b));
+                    , edge1b));
 
 
             //vetexViewSteps.add(new VertexViewStep(graph.getVertex(Integer.toString(0)), true));
@@ -84,11 +89,15 @@ public class BruteForce extends Algorithm {
             if((checker&(1<<city))==0){
                 //step2
 
-                EdgeViewStep edge2= new EdgeViewStep(graph.getEdge(Integer.toString(position),Integer.toString(city)),true);
+                stackEdges.add(graph.getEdge(Integer.toString(position),Integer.toString(city)));
 
-                VertexViewStep vertex2=new VertexViewStep(graph.getVertex(Integer.toString(city)), true);
 
-                stepList.add(new Step(2,"going from "+ position+ " to " +city, vertex2, edge2));
+                EdgeViewStep edge2= new EdgeViewStep(stackEdges.get(stackEdges.size()-1),true);
+
+
+                //VertexViewStep vertex2=new VertexViewStep(graph.getVertex(Integer.toString(city)), true);
+
+                stepList.add(new Step(2,"going from "+ position+ " to " +city, /*vertex2,*/ edge2));
 
                 count++;
 
@@ -105,10 +114,22 @@ public class BruteForce extends Algorithm {
 
         //step3
 
+        String idCity=stackEdges.get(stackEdges.size()-1).getDestination().getId();
 
-        VertexViewStep vertex3= new VertexViewStep(graph.getVertex(Integer.toString(position)), false);
+        VertexViewStep vertex3= new VertexViewStep(graph.getVertex(idCity), false);// take Id of city
 
-        if(count>0 && city <graph.getVertices().size() && city!=position){
+        if(stackEdges.size() > 0) {
+
+            EdgeViewStep edge3= new EdgeViewStep(stackEdges.get(stackEdges.size()-1),false);
+
+            stepList.add(new Step(3,"The  current cost is: "+ans,vertex3, edge3));
+
+            stackEdges.remove(stackEdges.size() - 1);
+        }else{
+            stepList.add(new Step(3,"The  current cost is: "+ans,vertex3));
+        }
+
+        /*if(count>0 && city <graph.getVertices().size() && city!=position){
             EdgeViewStep edge3= new EdgeViewStep(graph.getEdge(Integer.toString(position),Integer.toString(city)),false);
             stepList.add(new Step(3,"The  current cost is: "+ans,vertex3, edge3));
 
@@ -116,7 +137,7 @@ public class BruteForce extends Algorithm {
         }else{
             stepList.add(new Step(3,"The  current cost is: "+ans,vertex3));
 
-        }
+        }*/
 
 
         return ans;

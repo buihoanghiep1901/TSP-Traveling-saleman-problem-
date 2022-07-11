@@ -21,7 +21,6 @@ public class GraphView {
             if(!vertexView2.equals(vertexView1)){
                 addEdgeView(new EdgeView(vertexView1, vertexView2));
 
-                addEdgeView(new EdgeView(vertexView2, vertexView1));
             }
 
         });
@@ -31,9 +30,9 @@ public class GraphView {
     public void addEdgeView(EdgeView edgeView) {
         EdgeViews.add(edgeView);
 
-        graph.addEdge(edgeView.getEdge().getSource().getId(),
-                      edgeView.getEdge().getDestination().getId(),
-                      edgeView.getWeight());
+        graph.addUndirectedGraphEdge(edgeView.getEdge().getSource().getId(),
+                                    edgeView.getEdge().getDestination().getId(),
+                                    edgeView.getWeight());
         //System.out.println("edgeview: "+graph.toString());
     }
 
@@ -64,11 +63,18 @@ public class GraphView {
     }
 
     public  void highlight(Edge edge, boolean isLight) {
+        String id1=edge.getSource().getId();
+
+        String id2=edge.getDestination().getId();
+
 
         EdgeViews.forEach(EdgeView -> {
             //System.out.println("edge highlited");
+            String id3=EdgeView.getEdge().getSource().getId();
 
-            if(EdgeView.getEdge().compareTo(edge) ==0){
+            String id4=EdgeView.getEdge().getDestination().getId();
+
+            if( (id3.equals(id1) && id4.equals(id2)) || (id3.equals(id2) && id4.equals(id1)) ){
 
                 if(isLight){
                     EdgeView.setStroke(Color.ORANGE);
