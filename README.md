@@ -1,5 +1,6 @@
-# nhom-5
-thêm folder controller
-app.java
-sửa lại algorithim, brute force
-sửa lại step
+KIỂM TRA LẠI:
+  Folder controller, 
+  Folder Step, 
+  Folder Algorithm, 
+  Homepage.java.
+  
