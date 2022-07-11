@@ -232,8 +232,8 @@ public class HomepageController implements Initializable {
 	/*******************************Example***************************************************/
 	public void graphK4(){
 
-		double[] xlayout = {467.0,	260.0,	630.0,	447.0};
-		double[] ylayout = {67.00000000000003,	344.0,	337.0,	247.0};
+		double[] xlayout = {445.0,	260.0,	630.0,	445.0};
+		double[] ylayout = {67.0,	334.0,	334.0,	245.0};
 
 		for(int i=0; i< Graph.graphK4().getVertices().size();i++){
 			VertexView vertexViewNode = new VertexView(Graph.graphK4().getVertices().get(i));
@@ -244,6 +244,38 @@ public class HomepageController implements Initializable {
 		}
 		System.out.println(graphView.getGraph().toString());
 	}
+
+	public void graphK5(){
+
+		double[] xlayout = {459.0,	256.0,	328.0,	590.0,	662.0};
+		double[] ylayout = {38.0, 136.0, 336.0, 336.0, 136.0};
+
+		for(int i=0; i< Graph.graphK5().getVertices().size();i++){
+			VertexView vertexViewNode = new VertexView(Graph.graphK5().getVertices().get(i));
+			vertexViewNode.setLayoutX(xlayout[i]);
+			vertexViewNode.setLayoutY(ylayout[i]);
+			drawBoard.getChildren().add(vertexViewNode);
+			addOrRemoveVertex(vertexViewNode);
+		}
+		System.out.println(graphView.getGraph().toString());
+	}
+
+	public void graphK8(){
+
+		double[] xlayout = {327.0, 145.0, 145.0, 327.0, 563.0, 733.0, 733.0, 563.0};
+		double[] ylayout = {3.0, 124.0, 356.0, 474.0, 474.0, 356.0,  124.0, 3.0};
+
+		for(int i=0; i< Graph.graphK8().getVertices().size();i++){
+			VertexView vertexViewNode = new VertexView(Graph.graphK8().getVertices().get(i));
+			vertexViewNode.setLayoutX(xlayout[i]);
+			vertexViewNode.setLayoutY(ylayout[i]);
+			drawBoard.getChildren().add(vertexViewNode);
+			addOrRemoveVertex(vertexViewNode);
+		}
+		System.out.println(graphView.getGraph().toString());
+	}
+
+
 
 	public void clear(){
 		graphView.getVertexViews().clear();

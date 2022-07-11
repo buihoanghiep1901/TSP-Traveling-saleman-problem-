@@ -10,16 +10,18 @@ import java.io.IOException;
 
 public class app extends Application {
 
+	public static Stage stage;
+
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		try {
-			Parent root = FXMLLoader.load(app.class.getResource("/com/tsp/controller/Homepage.fxml"));
+			Parent root = FXMLLoader.load(app.class.getResource("app.fxml"));
 			Scene scene = new Scene(root);
-			primaryStage = new Stage();
-			primaryStage.setScene(scene);
-			primaryStage.setTitle("TSP Visualization Application");
-			primaryStage.setAlwaysOnTop(true);
-			primaryStage.show();
+			stage= new Stage();
+			stage.setScene(scene);
+			stage.setTitle("TSP Visualization Application");
+			stage.setAlwaysOnTop(true);
+			stage.show();
 
 		} catch (Exception e) {
 			e.printStackTrace();

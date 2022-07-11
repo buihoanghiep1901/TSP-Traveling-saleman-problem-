@@ -26,12 +26,12 @@
 						<Font name="System Bold Italic" size="14.0" />
 					</font>
 				</Button>
-				<Button layoutX="18.0" layoutY="218.0" maxHeight="30.0" maxWidth="160.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" style="-fx-background-color: #3638bc; -fx-border-color: gray; -fx-border-radius: 2.0;" text="K5 GRAPH" textFill="#00f000">
+				<Button layoutX="18.0" layoutY="218.0" maxHeight="30.0" maxWidth="160.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#graphK5" prefHeight="30.0" prefWidth="160.0" style="-fx-background-color: #3638bc; -fx-border-color: gray; -fx-border-radius: 2.0;" text="K5 GRAPH" textFill="#00f000">
 					<font>
 						<Font name="System Bold Italic" size="14.0" />
 					</font>
 				</Button>
-				<Button layoutX="18.0" layoutY="278.0" maxHeight="30.0" maxWidth="160.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" style="-fx-background-color: #3638bc; -fx-border-color: gray; -fx-border-radius: 2.0;" text="K8 GRAPH" textFill="#00f000">
+				<Button layoutX="18.0" layoutY="278.0" maxHeight="30.0" maxWidth="160.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#graphK8" prefHeight="30.0" prefWidth="160.0" style="-fx-background-color: #3638bc; -fx-border-color: gray; -fx-border-radius: 2.0;" text="K8 GRAPH" textFill="#00f000">
 					<font>
 						<Font name="System Bold Italic" size="14.0" />
 					</font>
