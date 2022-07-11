@@ -2,12 +2,15 @@ package com.tsp.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
 import com.tsp.app;
 import com.tsp.controller.graphView.GraphView;
 import com.tsp.controller.graphView.VertexView;
+import com.tsp.graph.Graph;
+import com.tsp.graph.Vertex;
 import com.tsp.step.Step;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -30,7 +33,6 @@ import com.tsp.algorithm.BruteForce;
 
 
 public class HomepageController implements Initializable {
-
 	@FXML
 
 	public AnchorPane drawBoard;
@@ -52,16 +54,7 @@ public class HomepageController implements Initializable {
 		// TODO Auto-generated method stub
 
 	}
-
-	public void graphK4() throws IOException {
-
-		Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("expGraph.fxml")));
-		Scene newScene = new Scene(root);
-		app.stage.setScene(newScene);
-		app.stage.show();
-
-		System.out.println(" graph k4");
-	}
+/********************************************Step********************************************************/
 
 	public void showStatus(){
 		status.setVisible(!status.isVisible());
@@ -71,6 +64,7 @@ public class HomepageController implements Initializable {
 		codeTrace.setVisible(!codeTrace.isVisible());
 	}
 
+/************************************Graph*******************************************************/
 	public void drawGraph(MouseEvent mouseEvent) {
 		Node location = mouseEvent.getPickResult().getIntersectedNode();
 		//System.out.println(location);
@@ -78,11 +72,14 @@ public class HomepageController implements Initializable {
 			VertexView vertexViewNode = new VertexView();
 			double x = robot.getMouseX() - drawBoard.localToScreen(drawBoard.getBoundsInLocal()).getMinX() - 22;
 			double y = robot.getMouseY() - drawBoard.localToScreen(drawBoard.getBoundsInLocal()).getMinY() - 22;
+
 			x = Math.min(x, drawBoard.getPrefWidth() - 44);
 			y = Math.min(y, drawBoard.getPrefHeight() - 44);
+
 			vertexViewNode.setLayoutX(x);
 			vertexViewNode.setLayoutY(y);
 			vertexViewNode.setLabel(graphView.getVertexViews().size());
+
 			drawBoard.getChildren().add(vertexViewNode);
 			addOrRemoveVertex(vertexViewNode);
 
@@ -163,6 +160,7 @@ public class HomepageController implements Initializable {
 		}
 	}
 
+/*******************************Algorithm************************************************/
 	public void BruteForce() {
 		Algorithm bf = new BruteForce();
 		bf.setGraph(graphView.getGraph());
@@ -231,7 +229,29 @@ public class HomepageController implements Initializable {
 		new Thread(task).start();
 	}
 
+	/*******************************Example***************************************************/
+	public void graphK4(){
 
+		double[] xlayout = {467.0,	260.0,	630.0,	447.0};
+		double[] ylayout = {67.00000000000003,	344.0,	337.0,	247.0};
+
+		for(int i=0; i< Graph.graphK4().getVertices().size();i++){
+			VertexView vertexViewNode = new VertexView(Graph.graphK4().getVertices().get(i));
+			vertexViewNode.setLayoutX(xlayout[i]);
+			vertexViewNode.setLayoutY(ylayout[i]);
+			drawBoard.getChildren().add(vertexViewNode);
+			addOrRemoveVertex(vertexViewNode);
+		}
+		System.out.println(graphView.getGraph().toString());
+	}
+
+	public void clear(){
+		graphView.getVertexViews().clear();
+		graphView.getEdgeViews().clear();
+		graphView.getGraph().getVertices().clear();
+		graphView.getGraph().getEdges().clear();
+		drawBoard.getChildren().clear();
+	}
 
 
 

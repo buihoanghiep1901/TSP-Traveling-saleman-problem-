@@ -38,10 +38,6 @@ public class VertexView extends StackPane {
         return this.v.getId();
     }
 
-    public Label getLabel() {
-        return this.label;
-    }
-
     public void setLabel(int id) {
         this.v= new Vertex(Integer.toString(id));
         this.label.setText(id + "");
@@ -51,7 +47,5 @@ public class VertexView extends StackPane {
         return v;
     }
 
-    public void setV(Vertex v) {
-        this.v = v;
-    }
+
 }

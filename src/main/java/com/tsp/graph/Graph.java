@@ -184,27 +184,37 @@ public class Graph {
         graph.addUndirectedGraphEdge("0", "5", 13);
         graph.addUndirectedGraphEdge("0", "6", 13);
         graph.addUndirectedGraphEdge("0", "7", 13);
+
+        graph.addUndirectedGraphEdge("1", "2", 25);
+        graph.addUndirectedGraphEdge("1", "3", 13);
+        graph.addUndirectedGraphEdge("1", "4", 25);
+        graph.addUndirectedGraphEdge("1", "5", 13);
+        graph.addUndirectedGraphEdge("1", "6", 13);
+        graph.addUndirectedGraphEdge("1", "7", 13);
+
+        graph.addUndirectedGraphEdge("2", "3", 13);
+        graph.addUndirectedGraphEdge("2", "4", 25);
+        graph.addUndirectedGraphEdge("2", "5", 13);
+        graph.addUndirectedGraphEdge("2", "6", 13);
+        graph.addUndirectedGraphEdge("2", "7", 13);
+
+        graph.addUndirectedGraphEdge("3", "4", 25);
+        graph.addUndirectedGraphEdge("3", "5", 13);
+        graph.addUndirectedGraphEdge("3", "6", 13);
+        graph.addUndirectedGraphEdge("3", "7", 13);
+
+        graph.addUndirectedGraphEdge("4", "5", 13);
+        graph.addUndirectedGraphEdge("4", "6", 13);
+        graph.addUndirectedGraphEdge("4", "7", 13);
+
+        graph.addUndirectedGraphEdge("5", "6", 13);
+        graph.addUndirectedGraphEdge("5", "7", 13);
+
+        graph.addUndirectedGraphEdge("6", "7", 13);
+
+
         return graph;
     }
 
-    /*
-
-    // biến listGrpah thành matrixGraph để sử dụng cho các thuật toán
-    /*public int[][] convertToMatrix(){
-
-        int[][] matrix = new int[vertices.size()][vertices.size()];// khỏi tạo ma trận
-
-        for (Vertex v : vertices) {
-            int row=Integer.parseInt(v.getId());// cho đỉnh source là row
-            for (Edge e : edges) {
-                if (e.getSource().getId().equals(v.getId())) {
-                    int col=Integer.parseInt(e.getDestination().getId());// cho đỉnh destination là col
-                    matrix[row][col]=e.getWeight();// cho weight của edge vào trong matrix
-                }
-            }
-        }
-
-        return matrix;
-    }*/
 
 }

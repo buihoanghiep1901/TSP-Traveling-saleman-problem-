@@ -36,10 +36,6 @@ public class Step {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -52,15 +48,8 @@ public class Step {
         return edgeStep;
     }
 
-    public void setEdgeStep(EdgeViewStep edgeStep) {
-        this.edgeStep = edgeStep;
-    }
-
     public VertexViewStep getVertexStep() {
         return vertexStep;
     }
 
-    public void setVertexStep(VertexViewStep vertexStep) {
-        this.vertexStep = vertexStep;
-    }
 }

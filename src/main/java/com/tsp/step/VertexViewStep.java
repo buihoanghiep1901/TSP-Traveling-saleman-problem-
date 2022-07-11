@@ -16,16 +16,9 @@ public class VertexViewStep {
         return vertex;
     }
 
-    public void setVertex(Vertex vertex) {
-        this.vertex = vertex;
-    }
-
     public boolean isHighLighted() {
         return Highlighted;
     }
 
-    public void setHighlighted(boolean highlighted) {
-        Highlighted = highlighted;
-    }
 
 }

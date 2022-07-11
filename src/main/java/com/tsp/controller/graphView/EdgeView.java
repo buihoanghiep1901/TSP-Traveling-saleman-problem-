@@ -37,7 +37,7 @@ public class EdgeView extends Line {
         setStroke(Color.BLACK);
 
         label.setStyle("-fx-background-radius: 20px;" +
-                "-fx-pref-height: 40px;-fx-pref-width: 40px;-fx-alignment: center");
+                "-fx-pref-height: 60px;-fx-pref-width: 80px;-fx-alignment: center");
     }
 
     public VertexView getFrom() {
@@ -64,15 +64,10 @@ public class EdgeView extends Line {
         return edge;
     }
 
-    public void setEdge(Edge edge) {
-        this.edge = edge;
-    }
 
     public int getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
+
 }

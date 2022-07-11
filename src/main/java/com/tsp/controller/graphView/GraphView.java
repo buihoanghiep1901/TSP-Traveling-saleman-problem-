@@ -24,7 +24,6 @@ public class GraphView {
             }
 
         });
-        //System.out.println("vertexview: "+graph.toString());
     }
 
     public void addEdgeView(EdgeView edgeView) {

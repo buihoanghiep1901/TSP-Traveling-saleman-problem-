@@ -11,12 +11,7 @@
 
 		<AnchorPane fx:id="menu" layoutY="-3.0" maxHeight="777.0" maxWidth="206.0" minHeight="0.0" minWidth="0.0" prefHeight="777.0" prefWidth="206.0" style="-fx-background-color: linear-gradient(to bottom, #ff66cc 0%, #3366ff 100%);;">
 			<children>
-				<Button layoutX="21.0" layoutY="20.0" maxHeight="30.0" maxWidth="160.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" style="-fx-background-color: #3638bc; -fx-border-color: gray; -fx-border-radius: 2.0;" text="HOME" textAlignment="CENTER" AnchorPane.topAnchor="20.0">
-					<font>
-						<Font name="System Bold Italic" size="14.0" />
-					</font>
-				</Button>
-				<Button  onAction="#BruteForce" layoutX="19.0" layoutY="567.0" maxHeight="30.0" maxWidth="160.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" style="-fx-background-color: #3638bc; -fx-border-color: gray; -fx-border-radius: 2.0;" text="BRUTE FORCE" textFill="#00f000" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="567.0">
+				<Button layoutX="19.0" layoutY="567.0" maxHeight="30.0" maxWidth="160.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#BruteForce" prefHeight="30.0" prefWidth="160.0" style="-fx-background-color: #3638bc; -fx-border-color: gray; -fx-border-radius: 2.0;" text="BRUTE FORCE" textFill="#00f000" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="567.0">
 					<font>
 						<Font name="System Bold Italic" size="14.0" />
 					</font>
@@ -41,21 +36,21 @@
 						<Font name="System Bold Italic" size="14.0" />
 					</font>
 				</Button>
-				<Button layoutX="18.0" layoutY="159.0" maxHeight="30.0" maxWidth="160.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" style="-fx-background-color: #3638bc; -fx-border-color: gray; -fx-border-radius: 2.0;" text="K4 GRAPH" textFill="#00f000">
+				<Button layoutX="18.0" layoutY="159.0" maxHeight="30.0" maxWidth="160.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#graphK4" prefHeight="30.0" prefWidth="160.0" style="-fx-background-color: #3638bc; -fx-border-color: gray; -fx-border-radius: 2.0;" text="K4 GRAPH" textFill="#00f000">
 					<font>
 						<Font name="System Bold Italic" size="14.0" />
 					</font>
 				</Button>
-				<Button layoutX="18.0" layoutY="422.0" maxHeight="30.0" maxWidth="160.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" style="-fx-background-color: #3638bc; -fx-border-color: gray; -fx-border-radius: 2.0;" text="RUN" textFill="#00f000">
-					<font>
-						<Font name="System Bold Italic" size="14.0" />
-					</font>
-				</Button>
+            <Button layoutX="23.0" layoutY="434.0" maxHeight="30.0" maxWidth="160.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#clear" prefHeight="30.0" prefWidth="160.0" style="-fx-background-color: #3638bc; -fx-border-color: gray; -fx-border-radius: 2.0;" text="CLEAR" textFill="#00f000">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Button>
 
 			</children>
 		</AnchorPane>
 
-		<AnchorPane fx:id="drawBoard" onMouseClicked="#drawGraph" layoutX="206.0" layoutY="-1.0" maxHeight="518.0" maxWidth="1063.0" prefHeight="518.0" prefWidth="965.0" style="-fx-background-color: #dddad6; -fx-background-radius: 10px; -fx-cursor: hand;" />
+		<AnchorPane fx:id="drawBoard" layoutX="206.0" layoutY="-1.0" maxHeight="518.0" maxWidth="1063.0" onMouseClicked="#drawGraph" prefHeight="518.0" prefWidth="965.0" style="-fx-background-color: #dddad6; -fx-background-radius: 10px; -fx-cursor: hand;" />
 
 		<TextFlow fx:id="status" layoutX="519.0" layoutY="529.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="46.0" prefWidth="561.0" style="-fx-background-color: #ff66cc; -fx-background-radius: 10px; -fx-padding: 10px;" visible="false" />
 		<Button fx:id="statusButton" layoutX="1097.0" layoutY="525.0" mnemonicParsing="false" onAction="#showStatus" prefHeight="46.0" prefWidth="52.0" style="-fx-background-color: #ff66cc; -fx-cursor: hand;">
