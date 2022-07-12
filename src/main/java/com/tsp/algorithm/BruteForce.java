@@ -45,7 +45,7 @@ public class BruteForce extends Algorithm {
 
     }
 
-    public int findTour(int visited, int checker, int position){
+    private int findTour(int visited, int checker, int position){
         //step0
         VertexViewStep vertex0=new VertexViewStep(graph.getVertex(Integer.toString(position)), true);
 

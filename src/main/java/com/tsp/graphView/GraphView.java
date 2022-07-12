@@ -1,4 +1,4 @@
-package com.tsp.controller.graphView;
+package com.tsp.graphView;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;

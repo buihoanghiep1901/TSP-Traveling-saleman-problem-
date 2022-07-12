@@ -57,7 +57,7 @@ public class DynamicProgramming extends Algorithm {
 
     }
 
-    public int findTour(int[][] memo, int visited, int checker, int position){
+    private int findTour(int[][] memo, int visited, int checker, int position){
 
         //step0
 

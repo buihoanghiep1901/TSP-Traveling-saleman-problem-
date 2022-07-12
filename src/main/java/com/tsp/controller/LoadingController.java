@@ -18,7 +18,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class AppController implements Initializable {
+public class LoadingController implements Initializable {
     @FXML
     public ProgressBar process;
     public AnchorPane container;

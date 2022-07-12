@@ -1,4 +1,4 @@
-package com.tsp.controller.graphView;
+package com.tsp.graphView;
 
 import com.tsp.graph.Edge;
 import javafx.scene.control.Label;

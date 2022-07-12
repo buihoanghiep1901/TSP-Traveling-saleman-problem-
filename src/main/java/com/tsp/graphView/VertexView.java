@@ -1,4 +1,4 @@
-package com.tsp.controller.graphView;
+package com.tsp.graphView;
 import  com.tsp.graph.Vertex;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;

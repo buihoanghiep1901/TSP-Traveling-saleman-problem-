@@ -139,7 +139,7 @@ public class Approximation extends Algorithm {
         }
     }
 
-    public int minKey(int[] key, boolean[] mstSet) // return the index of a vertex has min value and is not visited
+    private int minKey(int[] key, boolean[] mstSet) // return the index of a vertex has min value and is not visited
     {
         int min = Integer.MAX_VALUE;
         int minIndex=-1;
@@ -153,7 +153,7 @@ public class Approximation extends Algorithm {
         return minIndex;
     }
 
-    public int[] primMST() // getting the Minimum Spanning Tree from the given graph, using Prim's Algorithm
+    private int[] primMST() // getting the Minimum Spanning Tree from the given graph, using Prim's Algorithm
     {
 
 
@@ -206,7 +206,7 @@ public class Approximation extends Algorithm {
         return parent; // return the list of MST
     }
 
-    void dfs(int[] parent, int startingVertex, boolean[] visitedNodes, ArrayList<Integer> finalAns,ArrayList<Integer> dfsTrack) // getting the preorder walk of the MST using DFS
+     private void dfs(int[] parent, int startingVertex, boolean[] visitedNodes, ArrayList<Integer> finalAns,ArrayList<Integer> dfsTrack) // getting the preorder walk of the MST using DFS
     {
         // adding the node to final answer
         finalAns.add(startingVertex);
@@ -241,7 +241,7 @@ public class Approximation extends Algorithm {
         }
     }
 
-    public int calculate(ArrayList<Integer> finalAns){
+    private int calculate(ArrayList<Integer> finalAns){
         int shortestPath = 0;
 
         Object[] finalAnsArray=finalAns.toArray();
