@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="nhom-5:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2ae7a95-9573-41e0-8187-f4a953b5424c" name="Changes" comment="ok" />
+    <list default="true" id="e2ae7a95-9573-41e0-8187-f4a953b5424c" name="Changes" comment="ok">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/nhom_5_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,12 +35,16 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/HP/Desktop/nhom-5",
+    "last_opened_file_path": "C:/Users/HP/Downloads/Compressed/openjfx-18.0.1_windows-x64_bin-sdk/javafx-sdk-18.0.1/lib",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
@@ -40,7 +53,7 @@
       <recent name="com.tsp" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.app">
+  <component name="RunManager" selected="JAR Application.nhom-5.jar">
     <configuration name="GraphApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.tsp.GraphApplication" />
       <module name="nhom-5" />
@@ -67,8 +80,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="nhom-5.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/nhom_5_jar/nhom-5.jar" />
+      <option name="VM_PARAMETERS" value=" --module-path &quot;C:\Users\HP\Downloads\Compressed\openjfx-18.0.1_windows-x64_bin-sdk\javafx-sdk-18.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.app" />
+      <item itemvalue="Application.GraphApplication" />
+      <item itemvalue="JAR Application.nhom-5.jar" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JAR Application.nhom-5.jar" />
         <item itemvalue="Application.app" />
         <item itemvalue="Application.GraphApplication" />
       </list>
@@ -83,6 +108,9 @@
       <option name="presentableId" value="Default" />
       <updated>1657181487952</updated>
       <workItem from="1657637907665" duration="1784000" />
+      <workItem from="1657641728128" duration="146000" />
+      <workItem from="1657642067575" duration="731000" />
+      <workItem from="1657644188692" duration="1141000" />
     </task>
     <task id="LOCAL-00001" summary="ok">
       <created>1657243205830</created>
@@ -119,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657612741555</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="ok">
+      <created>1657639883365</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1657639883365</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
