@@ -1,6 +1,3 @@
-KIỂM TRA LẠI:
-  Folder controller, 
-  Folder Step, 
-  Folder Algorithm, 
-  Homepage.java.
+TRAVELING SALEMAN PROBLEM VISUALIZATION
+Sử dụng intelij, file nhom5.jar ở folder out
   
