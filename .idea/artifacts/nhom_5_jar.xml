@@ -2,7 +2,7 @@
   <artifact type="jar" name="nhom-5:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/nhom_5_jar</output-path>
     <root id="archive" name="nhom-5.jar">
-      <element id="module-output" name="nhom-5" />
+      <element id="module-output" name="nhom5-topic11" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/junit/jupiter/junit-jupiter-engine/5.8.2/junit-jupiter-engine-5.8.2.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/18/javafx-base-18-win.jar" path-in-jar="/" />
