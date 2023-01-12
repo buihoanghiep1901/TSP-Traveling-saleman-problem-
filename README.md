@@ -1,3 +1,8 @@
-TRAVELING SALEMAN PROBLEM VISUALIZATION
-Sử dụng intelij, file nhom5.jar ở folder out
+TRAVELING SALEMAN PROBLEM VISUALIZATION Mô phỏng lại 3 thuật toán bằng hình ảnh:
+
++Brute Force
+
++Approximation
+
++DynamicPrograming
   
